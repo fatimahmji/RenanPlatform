@@ -1,0 +1,579 @@
+/* Font faces for custom fonts */
+@font-face {
+    font-family: 'Amariya';
+    src: url('./font/Amariya.Arabic.Font/Amariya-Regular.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Amariya-bold';
+    src: url('./font/Amariya.Arabic.Font/Amariya-Heavy.otf') format('opentype');
+}
+
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 5px;
+}
+
+/* Body and HTML styles */
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    font-family: 'Amariya';
+    background: linear-gradient(to right, #01011f, #2c1e4a);
+    color: #f2f2f2;
+    overflow-x: hidden;
+}
+
+/* Navigation menu styles */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+    height: 60px; /* Adjust height to match the style */
+    margin-right: 15px;
+}
+
+/* Individual menu item styles */
+nav ul li {
+    display: inline-block;
+    margin: 0 20px; /* Adjust spacing between items */
+    position: relative;
+}
+
+/* Link styles */
+nav ul li a {
+    color: #f2f2f2; /* White text color */
+    text-decoration: none;
+    font-size: 24px;
+    font-family: 'Amariya-bold', serif;
+    padding: 20px 0; /* Space around text */
+    display: block;
+    transition: color 0.3s ease;
+}
+
+/* Hover effect */
+nav ul li a:hover {
+    color: #ff6ec7; /* Hover color */
+}
+
+/* Active link styling */
+.active-link {
+    color: #ff6ec7; /* Active link color */
+    border-bottom: 2px solid #ff6ec7; /* Underline active link */
+    padding-bottom: 5px; /* Adjust to match height */
+}
+
+/* Center the logo and navigation items */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px; /* Padding for spacing around the header */
+}
+
+
+/* Logo styles in header */
+.logo {
+    display: inline;
+    margin-left: 20px;
+    align-content: left;
+    height: 9%;
+    width: 9%;
+}
+
+/* Main content container with flexbox layout */
+.main-content {
+    display: flex;
+    align-items: center;
+    gap: 50px; /* Adjust space between image and text */
+    max-width: 1200px; /* Set a max-width to align with your design */
+    margin-top: -50px;
+}
+
+/* Image container */
+.main-img {
+    flex-shrink: 0; /* Prevent the image from shrinking */
+    max-width: 42%;
+    justify-content: left;
+    margin-left: -30px;
+}
+
+/* Image inside the container */
+.fade-image {
+    width: 100%;
+    border-radius: 20px;
+    object-fit: cover;
+    transition: opacity 1s ease-in-out;
+}
+
+/* Text container */
+.main-text {
+    max-width: 60%; /* Span text takes 60% of the width */
+    text-align: right;
+    margin-top: 25px;
+}
+
+/* Main content text span */
+.main-text span {
+    display: block;
+    font-size: 72px;
+    margin-bottom: 20px;
+    line-height: 1.2; /* Adjust line height for better readability */
+}
+
+/* Button container under the text */
+.buttons-container {
+    display: flex;
+    justify-content: flex-start; /* Align buttons to the left in RTL layout */
+    gap: 23px; /* Space between buttons */
+    margin-top: 30px;
+}
+
+/* General button styles */
+.main-button {
+    padding: 5px 20px;
+    border-radius: 10px;
+    border: none;
+    font-size: 26px;
+    font-family: "Amariya-bold";
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    height: 50px;
+    min-width: 180px;
+}
+
+/* Primary button ("ابدأ الآن") */
+.primary-button {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3));
+    color: #2c1e4a;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: -8px 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Secondary button ("اكتشف خدماتنا") */
+.secondary-button {
+    background: linear-gradient(to right top, rgb(255, 255, 255,0.1), rgba(255, 255, 255, 0),rgba(255, 255, 255, 0));
+    color: #ff6ec7;
+    box-shadow: -8px 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Hover effects for buttons */
+.main-button:hover {
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.primary-button:hover {
+    background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.5));
+}
+
+.secondary-button:hover {
+    color: #ff6ec7;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* TTS Model page specific styles */
+.tts-icons {
+    width: 50px;
+    height: 50px;
+    margin-left: 15px;
+    margin-bottom: -14px;
+}
+
+.tts-titles {
+    font-size: 50px;
+    font-weight: bold;
+    color: #ff6ec7;
+}
+
+.tts-inputs-div {
+    width: 60%;
+    align-items: right;
+    padding: 9%;
+}
+
+.tts-buttons-div {
+    width: 40%;
+    align-items: right;
+    padding: 9%;
+}
+
+.input-textarea {
+    background-color: #d4d3d7;
+    color:#1d143b;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+    width: 300px;
+    height: 200px;
+    padding: 3px;
+    resize: none;
+    overflow-y: scroll;
+}
+
+textarea::placeholder {
+    color: #1d143b;
+}
+
+
+/* Services Page main container */
+.context {
+    display: block;
+    font-size: 30px;
+    color: #e0e0e0;
+    line-height: 1.7em;
+}
+
+/* Services Page main container */
+.content-services {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px;
+    max-height: 50%;
+}
+
+/* Row container for service cards */
+.card-row-services {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5%;
+    gap: 40px;
+
+}
+
+.card-row-services.soon {
+    justify-content: flex-start;
+    margin-right: 100px;
+}
+
+
+.card-services{
+    border-radius: 40px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+    padding: 30px;
+    text-align: center;
+    width: 20%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 300px;
+    background: linear-gradient(to right top, rgb(255, 255, 255,0.1), rgba(255, 255, 255, 0),rgba(255, 255, 255, 0));
+}
+
+/* Special styling for 'soon' cards */
+.card-services-soon {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8));
+    color: #0f0e35;
+    border-radius: 40px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+    padding: 30px;
+    text-align: center;
+    width: 20%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 20%;
+    max-width: 300px;
+    margin-right: 5%;
+}
+
+/* Hover effect for service cards */
+.card-services:hover,
+.card-services-soon:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.6);
+}
+
+/* Icon styling in service cards */
+.card-icon-services {
+    width: 27%;
+    margin-bottom: 20px;
+}
+
+/* Title styling in service cards */
+.card-title-services {
+    display: block;
+    font-size: 30px;
+    color: #ff6ec7;
+    margin-bottom: 10px;
+    font-family: 'Amariya-bold';
+    font-weight: bolder;
+}
+
+/* Special title styling for 'soon' cards */
+.card-services-soon .card-title-services {
+    color: #0f0e35;
+}
+
+/* Description styling in service cards */
+.card-description-services {
+    font-size: 24px;
+    color: #e0e0e0;
+    line-height: 1.2em;
+}
+
+/* Special description styling for 'soon' cards */
+.card-services-soon .card-description-services {
+    color: #0f0e35;
+}
+
+/* Section title container styling */
+.section-title-services {
+    display: flex;
+    justify-content: flex-start; /* Align items to the right */
+    align-items: center; /* Center align vertically */
+    margin-bottom: 20px;
+    margin-right: 90px;
+}
+
+.soon-text {
+    margin-left: 10px; 
+    width:10%;
+    display: inline-block;
+    margin-right: 5%;
+}
+
+.soon-divider {
+    width: 70%; /* Adjust this value to control the width of the divider */
+    height: auto; /* Ensure the height is automatically adjusted */
+    display: inline-block;
+    margin-top: 15px;
+}
+
+
+/* Remove right margin for the last card in the row */
+.card-row-services > div:last-child {
+    margin-right: 0;
+}
+
+
+/* About Page card container */
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    padding-top: 80px;
+    gap: 40px;
+}
+
+/* Individual about card styling */
+.card-about {
+    background: linear-gradient(to right top, rgb(255, 255, 255,0.1), rgba(255, 255, 255, 0),rgba(255, 255, 255, 0));
+    border-radius: 20px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+    padding: 30px;
+    text-align: center;
+    width: 300px;
+    height: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    display: flex;
+}
+
+/* Hover effect for about cards */
+.card-about:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.6);
+}
+
+/* Title styling in about cards */
+.title {
+    display: block;
+    font-size: 50px;
+    font-weight: bold;
+    color: #ff6ec7;
+    margin-bottom: 20px;
+    font-family: 'Amariya-bold';
+
+}
+
+/* Context (text) styling in about cards */
+.context {
+    display: block;
+    font-size: 30px;
+    color: #e0e0e0;
+    line-height: 37px;
+}
+
+/* Main container for the contact page */
+#contact-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Container for the contact cards */
+.contact {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 100px;
+    flex-wrap: nowrap;
+}
+
+/* Individual contact card styling */
+.card {
+    background: linear-gradient(to right top, rgb(255, 255, 255,0.1), rgba(255, 255, 255, 0),rgba(255, 255, 255, 0));
+    border-radius: 20px;
+    padding: 60px 20px 20px 20px;
+    width: 200px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+    flex-shrink: 0;
+    margin: 0px auto;
+}
+
+/* Hover effect for contact cards */
+.card:hover {
+    transform: scale(1.05);
+}
+
+/* Profile picture positioning in contact cards */
+.profile-pic {
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translate(-50%);
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+/* Image inside the profile picture */
+.profile-pic img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+/* Name styling inside contact cards */
+.card span {
+    display: block;
+    margin-top: 50px;
+    font-size: 30px;
+    color: #ff6ec7;
+    font-weight: bold;
+    font-family: 'Amariya-bold', sans-serif;
+}
+
+/* Contact icon container */
+.contact-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+    margin-bottom: 35px;
+}
+
+/* Contact icon styling */
+.contact-icons img {
+    width: 30px;
+    height: 30px;
+    transition: opacity 0.3s ease;
+}
+
+/* Hover effect for contact icons */
+.contact-icons img:hover {
+    opacity: 0.8;
+    filter: invert(60%) sepia(100%) saturate(700%) hue-rotate(290deg) brightness(110%) contrast(105%);
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .main-right {
+        width: 100%;
+        text-align: center;
+    }
+
+    .image-slider {
+        width: 100%;
+    }
+
+    span {
+        font-size: 48px;
+    }
+
+    .main-button {
+        width: 180px;
+        font-size: 20px;
+    }
+
+    .contact {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card-row-services {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .section-title-services {
+        text-align: center;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    span {
+        font-size: 36px;
+    }
+
+    .main-button {
+        width: 160px;
+        font-size: 18px;
+    }
+
+    .card {
+        width: 150px;
+        padding: 40px 20px;
+    }
+
+    .profile-pic {
+        width: 120px;
+        height: 120px;
+    }
+
+    .card span {
+        font-size: 24px;
+    }
+
+    .card-row-services {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card-services,
+    .card-services-soon {
+        width: 80%;
+    }
+
+    .card-about {
+        width: 100%;
+        max-width: 320px;
+    }
+}
