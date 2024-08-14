@@ -492,6 +492,124 @@ textarea::placeholder {
     filter: invert(60%) sepia(100%) saturate(700%) hue-rotate(290deg) brightness(110%) contrast(105%);
 }
 
+
+/*TTS-Model Page*/
+.content-tts-model {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.tts-inputs-div {
+    flex: 2;
+    margin-right: 20px;
+}
+
+.tts-buttons-div {
+    flex: 1;
+    text-align: center;
+}
+
+.tts-icons {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+}
+
+.tts-titles {
+    font-size: 18px;
+    margin-left: 10px;
+    color: #FF8DD1; /* Pink color */
+}
+
+.input-textarea {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 15px;
+    margin-top: 10px;
+    background-color: #C4C4C4; /* Light gray background for text areas */
+    color: #181238; /* Dark text color for readability */
+    font-size: 16px;
+}
+
+#tts-input {
+    margin-top: 20px;
+    height: 120px; /* Increased height for the second textarea */
+}
+
+button {
+    background-color: #FC5AD1; /* Vibrant pink color */
+    border: none;
+    border-radius: 15px;
+    padding: 10px 20px;
+    color: white;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #FF69B4; /* Slightly darker pink on hover */
+}
+
+#download-link, #audio-result {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+    color: #FF8DD1; /* Pink color */
+}
+
+.tts-buttons-div button {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.tts-buttons-div select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: #A74DBF; /* Purple color */
+    color: #fff; /* White text */
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.tts-buttons-div button, .tts-buttons-div select {
+    background-color: #240B36; /* Darker purple for buttons */
+    border: none;
+    color: white;
+}
+
+.tts-buttons-div button:hover, .tts-buttons-div select:hover {
+    background-color: #401C61; /* Slightly lighter purple on hover */
+}
+
+.tts-buttons-div .tts-icons {
+    margin-right: 10px;
+}
+
+.tts-titles {
+    color: #FF8DD1; /* Light pink for titles */
+}
+
+.tts-inputs-div .tts-icons {
+    margin-right: 10px;
+}
+
+.tts-buttons-div select option {
+    background-color: #240B36; /* Dark purple */
+    color: white;
+}
+
+
+
+
+
 /* Responsive Styles */
 @media (max-width: 1200px) {
     .main-right {
