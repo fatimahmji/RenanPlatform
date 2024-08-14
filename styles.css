@@ -500,6 +500,7 @@ textarea::placeholder {
     padding: 20px;
     max-width: 1200px;
     margin: auto;
+    margin-top:-5%;
 }
 
 .tts-inputs-div {
