@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رِنـــان - تواصل معنا</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch('../templates/header.html')
+                .then(response => response.text())
+                .then(data => {
+                    // Insert the header into the page
+                    document.getElementById('header-placeholder').innerHTML = data;
+
+                    // Get the current page URL
+                    const currentPage = window.location.pathname.split("/").pop();
+
+                    // Find all links in the header
+                    const navLinks = document.querySelectorAll('header nav ul li a');
+
+                    // Loop through the links and add the active-link class to the one that matches the current page
+                    navLinks.forEach(link => {
+                        const linkPath = link.getAttribute('href').split("/").pop();
+                        if (linkPath === currentPage) {
+                            link.classList.add('active-link');
+                        }
+                    });
+                });
+        });
+    </script>
+</head>
+
+<body>
+    <div id="header-placeholder"></div>
+    <div id="contact" class="content active">
+
+        <!-- Contact content here -->
+        <div class="contact">
+            <div id="FatimahAlj" class="card">
+                <img src="../static/images/Member_Photo/Fatimah.png" alt="فاطمة الجشي" class="profile-pic">
+                <span class="name">فاطمة الجشي</span>
+                <div class="contact-icons">
+                    <a href="mailto:aljishi.fatimahm@gmail.com"><img src="../static/images/icons/email.png" alt="Email"></a>
+                    <a href="https://www.linkedin.com/in/fatimah-aljishi-103927291/" target="_blank" rel="noopener noreferrer"><img src="../static/images/icons/linkedin.png" alt="LinkedIn"></a>
+                </div>
+            </div>
+
+            <div id="AbdullahAlt" class="card">
+                <img src="../static/images/Member_Photo/Abdullah.png" alt="عبدالله الطعمة" class="profile-pic">
+                <span class="name">عبدالله الطعمة</span>
+                <div class="contact-icons">
+                    <a href="mailto:abdullah.ahmad.altomah@gmail.com"><img src="../static/images/icons/email.png" alt="Email"></a>
+                    <a href="https://www.linkedin.com/in/abdullah-al-tamh-643851281/" target="_blank" rel="noopener noreferrer"><img src="../static/images/icons/linkedin.png" alt="LinkedIn"></a>
+                </div>
+            </div>
+
+            <div id="SarahAlsh" class="card">
+                <img src="../static/images/Member_Photo/Sarah.png" alt="ساره آل شيخ محمد" class="profile-pic">
+                <span class="name">ساره آل شيخ محمد</span>
+                <div class="contact-icons">
+                    <a href="mailto:sarah.alshaikh@outlook.sa"><img src="../static/images/icons/email.png" alt="Email"></a>
+                    <a href="https://www.linkedin.com/in/sarah-alshaikhmohammed-ab20a9252/" target="_blank" rel="noopener noreferrer"><img src="../static/images/icons/linkedin.png" alt="LinkedIn"></a>
+                </div>
+            </div>
+
+            <div id="SultanAlb" class="card">
+                <img src="../static/images/Member_Photo/Sultan.png" alt="سلطان البيات" class="profile-pic">
+                <span class="name">سلطان البيات</span>
+                <div class="contact-icons">
+                    <a href="mailto:sultanalbayyat@gmail.com"><img src="../static/images/icons/email.png" alt="Email"></a>
+                    <a href="https://www.linkedin.com/in/sultan-albayyat/" target="_blank" rel="noopener noreferrer"><img src="../static/images/icons/linkedin.png" alt="LinkedIn"></a>
+                </div>
+            </div>
+
+            <div id="HassanAlz" class="card">
+                <img src="../static/images/Member_Photo/Hasan1.png" alt="حسن الزاير" class="profile-pic">
+                <span class="name">حسن الزاير</span>
+                <div class="contact-icons">
+                    <a href="mailto:hasan.alzayer9@gmail.com"><img src="../static/images/icons/email.png" alt="Email"></a>
+                    <a href="https://www.linkedin.com/in/hasan-alzayer/" target="_blank" rel="noopener noreferrer"><img src="../static/images/icons/linkedin.png" alt="LinkedIn"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../static/js/script"></script>
+</body>
+</html>

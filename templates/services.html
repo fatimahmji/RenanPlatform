@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رِنـــان - خدماتنا</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch('../templates/header.html')
+                .then(response => response.text())
+                .then(data => {
+                    // Insert the header into the page
+                    document.getElementById('header-placeholder').innerHTML = data;
+
+                    // Get the current page URL
+                    const currentPage = window.location.pathname.split("/").pop();
+
+                    // Find all links in the header
+                    const navLinks = document.querySelectorAll('header nav ul li a');
+
+                    // Loop through the links and add the active-link class to the one that matches the current page
+                    navLinks.forEach(link => {
+                        const linkPath = link.getAttribute('href').split("/").pop();
+                        if (linkPath === currentPage) {
+                            link.classList.add('active-link');
+                        }
+                    });
+                });
+        });
+    </script>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+    <div id="services" class="content active">
+        <!-- Services content here -->
+        <div class="services-size">
+        <div class="card-row-services">
+            <div class="card-services">
+                <img src="../static/images/icons/modify.png" alt="تحرير وتحسين الصوت" class="card-icon-services">
+                <span class="card-title-services">تحرير وتحسين الصوت</span>
+                <div class="card-description-services">اختر الصوت المناسب واضبط السرعة لتحريره صوتية مثالية.</div>
+            </div>
+    
+            <div class="card-services">
+                <img src="../static/images/icons/generate_text.png" alt="انشاء وتوليد النصوص" class="card-icon-services">
+                <span class="card-title-services">انشاء وتوليد النصوص</span>
+                <div class="card-description-services">ابتكر محتوى إبداعي يلبي احتياجاتك ويدعم رسالتك.</div>
+            </div>
+    
+            <div class="card-services">
+                <img src="../static/images/icons/text_to_speech.png" alt="تحويل النصوص إلى صوت" class="card-icon-services">
+                <span class="card-title-services">تحويل النصوص إلى صوت</span>
+                <div class="card-description-services">أحسن نصوصك بصوت ناطق يجسد المعنى بجودة فائقة.</div>
+            </div>
+        </div>
+    
+        <div class="section-title-services">
+            <img src="../static/images/logo/soon.png" alt="قريباً" class="soon-text">
+            <img src="../static/images/elements/soon_divider.png" alt="divider" class="soon-divider">
+        </div>
+        
+    
+        <div class="card-row-services soon">
+            <div class="card-services-soon">
+                <img src="../static/images/icons/audio_video.png" alt="دمج الصوت مع الفيديو" class="card-icon-services">
+                <span class="card-title-services">دمج الصوت مع الفيديو</span>
+                <div class="card-description-services">دمج سلس للصوت مع الفيديو لتجربة متكاملة.</div>
+            </div>
+    
+            <div class="card-services-soon">
+                <img src="../static/images/icons/language.png" alt="دعم اللهجات" class="card-icon-services">
+                <span class="card-title-services">دعم اللهجات</span>
+                <div class="card-description-services">اختر اللهجة التي تلامس جمهورك.</div>
+            </div>
+    </div>
+    </div>
+    
+
+    <script src="../static/js/script"></script>
+</body>
+</html>

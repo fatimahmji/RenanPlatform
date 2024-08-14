@@ -1,12 +1,12 @@
 /* Font faces for custom fonts */
 @font-face {
     font-family: 'Amariya';
-    src: url('./font/Amariya.Arabic.Font/Amariya-Regular.otf') format('opentype');
+    src: url('../font/Amariya.Arabic.Font/Amariya-Regular.otf') format('opentype');
 }
 
 @font-face {
     font-family: 'Amariya-bold';
-    src: url('./font/Amariya.Arabic.Font/Amariya-Heavy.otf') format('opentype');
+    src: url('../font/Amariya.Arabic.Font/Amariya-Heavy.otf') format('opentype');
 }
 
 /* Custom scrollbar styles */
@@ -577,7 +577,7 @@ button:hover {
     border-radius: 20px;
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
     margin-bottom: 20px;
-    appearance: ;
+    /* appearance: ; */
 }
 
 .select-container{
