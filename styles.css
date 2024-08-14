@@ -493,7 +493,6 @@ textarea::placeholder {
 }
 
 
-/*TTS-Model Page*/
 .content-tts-model {
     display: flex;
     justify-content: space-between;
@@ -533,11 +532,8 @@ textarea::placeholder {
     background-color: #C4C4C4; /* Light gray background for text areas */
     color: #181238; /* Dark text color for readability */
     font-size: 16px;
-}
-
-#tts-input {
-    margin-top: 20px;
-    height: 120px; /* Increased height for the second textarea */
+    resize: none; /* Prevents resizing */
+    overflow-y: hidden; /* Removes the scrollbar */
 }
 
 button {
@@ -550,6 +546,9 @@ button {
     margin-top: 20px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 button:hover {
@@ -606,7 +605,22 @@ button:hover {
     color: white;
 }
 
+.btn-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.btn-icon {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+}
+
+.no-scroll {
+    overflow: hidden; /* Removes scrollbar */
+}
 
 
 

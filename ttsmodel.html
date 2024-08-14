@@ -24,31 +24,40 @@
         <div class="tts-inputs-div">
             <img src="./images/icons/generate_text.png" alt="انشئ محتوى" class="tts-icons">
             <span class="tts-titles"> انشئ محتوى </span> <br>
-            <textarea id="text-gen-input" class="input-textarea" style="height: 80px;" placeholder="اكتب فكرتك هنا ليتم انشاء نص إبداعي لها.."></textarea> <br>
-
+            <textarea id="text-gen-input" class="input-textarea no-scroll" style="height: 80px;" placeholder="اكتب فكرتك هنا ليتم انشاء نص إبداعي لها.."></textarea> <br>
+    
             <img src="./images/icons/text_to_speech.png" alt="محتوى مسموع" class="tts-icons">
             <span class="tts-titles"> محتوى مسموع </span> <br>
-            <textarea id="tts-input" class="input-textarea" placeholder="اكتب نصك الإبداعي هنا ليتم تحويله إلى صوت نابض بالحياة، سيتم عرض النص المقترح لفكرتك هنا.."></textarea> <br><br>
-
-            <button id="create">انشاء</button>
+            <textarea id="tts-input" class="input-textarea no-scroll" placeholder="اكتب نصك الإبداعي هنا ليتم تحويله إلى صوت نابض بالحياة، سيتم عرض النص المقترح لفكرتك هنا.."></textarea> <br><br>
+    
+            <button id="create" class="btn-with-icon">
+                <img src="./images/icons/create.png" alt="انشاء" class="btn-icon">
+                انشاء
+            </button>
             <audio id="audio-result" controls hidden></audio>
             <a id="download-link" href="#" download="audio.wav" hidden>تحميل</a>
         </div>
         <div class="tts-buttons-div">
-            <button id="create-voice-over" class="">انشئ تعليقًا صوتيًا</button> <br>
-            <button id="create-boadcast" class=""> قدّم بودكاست</button> <br><br>
-
+            <button id="create-voice-over" class="btn-with-icon">
+                <img src="./images/icons/voice_over.png" alt="انشئ تعليقًا صوتيًا" class="btn-icon">
+                انشئ تعليقًا صوتيًا
+            </button> <br>
+            <button id="create-boadcast" class="btn-with-icon">
+                <img src="./images/icons/broadcast.png" alt="قدّم بودكاست" class="btn-icon">
+                قدّم بودكاست
+            </button> <br><br>
+    
             <select id="speaker-select" class="">
                 <option id="speaker1">المتحدث 1</option>
                 <option id="speaker2">المتحدث 2</option>
             </select><br>
-
+    
             <select id="speed-select" class="">
                 <option id="slow">بطيء</option>
                 <option id="regular">معتدل</option>
                 <option id="fast">سريع</option>
             </select><br>
-
+    
             <select id="music-select" class="">
                 <option id="no-music">بدون موسيقى</option>
                 <option id="music1">موسيقى 1</option>
@@ -57,6 +66,7 @@
             </select>
         </div>
     </div>
+    
 
     <script src="script.js"></script>
 </body>
