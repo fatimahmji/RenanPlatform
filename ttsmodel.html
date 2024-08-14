@@ -29,13 +29,17 @@
             <img src="./images/icons/text_to_speech.png" alt="محتوى مسموع" class="tts-icons">
             <span class="tts-titles"> محتوى مسموع </span> <br>
             <textarea id="tts-input" class="input-textarea no-scroll" placeholder="اكتب نصك الإبداعي هنا ليتم تحويله إلى صوت نابض بالحياة، سيتم عرض النص المقترح لفكرتك هنا.."></textarea> <br><br>
-    
-            <button id="create" class="btn-with-icon">
+            
+            <dive class="results">
+            <button id="create" class="create-btn">
                 <img src="./images/icons/create.png" alt="انشاء" class="btn-icon">
-                انشاء
+                انـشــاء
             </button>
-            <audio id="audio-result" controls hidden></audio>
-            <a id="download-link" href="#" download="audio.wav" hidden>تحميل</a>
+            <audio class="audio-res" id="audio-result" controls hidden></audio>
+            <button class="download-btn">
+            <img id="download-link" src="./images/icons/download.png" download="audio.wav" hidden>
+        </button>
+        </dive>
         </div>
         <div class="tts-buttons-div">
             <button id="create-voice-over" class="btn-with-icon">

@@ -558,9 +558,12 @@ button:hover {
 
 #download-link, #audio-result {
     display: block;
-    margin-top: 20px;
     text-align: center;
     color: #FF8DD1; /* Pink color */
+}
+
+.audio-res{
+    display: inline;
 }
 
 .tts-buttons-div button {
@@ -590,7 +593,7 @@ button:hover {
 .drop-icon{
     position: absolute;
     right: 13%;
-    top: 32%;
+    top: 24%;
     transform: translateY(-50%);
     pointer-events: none; /* Prevent click events */
     width: 11%; /* Adjust the size of the icon */
@@ -605,7 +608,7 @@ select:focus {
     color: white;
 }
 
-.tts-buttons-div button:hover, .tts-buttons-div select:hover,{
+.tts-buttons-div button:hover, .tts-buttons-div select:hover {
     background-color: #401C61; /* Slightly lighter purple on hover */
 }
 
@@ -624,6 +627,7 @@ select:focus {
 .tts-buttons-div select option {
     background-color: #0d092b; /* Dark purple */
     color: white;
+    font-family: 'Amariya';
 }
 
 
@@ -646,6 +650,49 @@ select:focus {
     margin-left: 7%;
 }
 
+.results{
+    display: inline;
+}
+.create-btn{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: #f876c3;
+    font-family: 'Amariya-Bold';
+    background: linear-gradient(to right top, rgb(255, 255, 255,0.2), rgba(255, 255, 255, 0),rgba(255, 255, 255, 0));
+    border-radius: 20px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+    width: 30%;
+    padding-top: -10%;
+    padding-bottom: -10%;
+}
+
+.create-btn img{
+    width: 25%;
+    height: 25%;
+    margin-left: 10%;
+    margin-right: -5%;
+}
+
+.download-btn{
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    color: #f876c3;
+    font-family: 'Amariya-Bold';
+    background: linear-gradient(to right top, rgb(255, 255, 255,0.2), rgba(255, 255, 255, 0),rgba(255, 255, 255, 0));
+    border-radius: 80%;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+    width: 15%;
+    height: 10%;
+}
+
+.download-btn img{
+    width: 95%;
+}
 .no-scroll {
     overflow: hidden; /* Removes scrollbar */
 }
