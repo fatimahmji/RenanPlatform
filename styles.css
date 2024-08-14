@@ -184,6 +184,47 @@ header {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
+/* TTS Model page specific styles */
+.tts-icons {
+    width: 50px;
+    height: 50px;
+    margin-left: 15px;
+    margin-bottom: -14px;
+}
+
+.tts-titles {
+    font-size: 50px;
+    font-weight: bold;
+    color: #ff6ec7;
+}
+
+.tts-inputs-div {
+    width: 50%;
+    align-items: right;
+    padding: 9%;
+}
+
+.tts-buttons-div {
+    width: 40%;
+    align-items: right;
+    padding: 9%;
+}
+
+.input-textarea {
+    background-color: #d4d3d7;
+    color:#1d143b;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+    width: 300px;
+    height: 200px;
+    padding: 3px;
+    resize: none;
+    overflow-y: scroll;
+}
+
+textarea::placeholder {
+    color: #1d143b;
+}
+
 
 
 /* Services Page main container */
@@ -511,9 +552,12 @@ button:hover {
 
 #download-link, #audio-result {
     display: block;
-    margin-top: 20px;
     text-align: center;
     color: #FF8DD1; /* Pink color */
+}
+
+.audio-res{
+    display: inline;
 }
 
 .tts-buttons-div button {
@@ -523,17 +567,37 @@ button:hover {
 
 .tts-buttons-div select {
     width: 100%;
-    padding: 10px;
-    border-radius: 10px;
+    padding-right:30%;
+    padding-left: 5%;
     border: none;
-    background-color: #A74DBF; /* Purple color */
-    color: #fff; /* White text */
-    font-size: 16px;
-    margin-bottom: 15px;
+    font-size: 25px;
+    font-family: 'Amariya-Bold';
+    background: linear-gradient(to right top, rgb(255, 255, 255,0.1), rgba(255, 255, 255, 0),rgba(255, 255, 255, 0));
+    border-radius: 20px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+    margin-bottom: 20px;
+    appearance: ;
+}
+
+.select-container{
+    position: relative;
+    display: inline-block;
+    width: 100%; /* Adjust width as needed */
+}
+.drop-icon{
+    position: absolute;
+    right: 13%;
+    top: 24%;
+    transform: translateY(-50%);
+    pointer-events: none; /* Prevent click events */
+    width: 11%; /* Adjust the size of the icon */
+}
+
+select:focus {
+    outline: none;
 }
 
 .tts-buttons-div button, .tts-buttons-div select {
-    background-color: #240B36; /* Darker purple for buttons */
     border: none;
     color: white;
 }
@@ -555,23 +619,74 @@ button:hover {
 }
 
 .tts-buttons-div select option {
-    background-color: #240B36; /* Dark purple */
+    background-color: #0d092b; /* Dark purple */
     color: white;
+    font-family: 'Amariya';
 }
+
 
 .btn-with-icon {
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: right;
+    font-size: 25px;
+    font-family: 'Amariya-Bold';
+    background: linear-gradient(to right top, rgb(255, 255, 255,0.1), rgba(255, 255, 255, 0),rgba(255, 255, 255, 0));
+    border-radius: 20px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
 }
 
 .btn-icon {
-    margin-right: 10px;
-    width: 20px;
-    height: 20px;
+    margin-right: 5%;
+    width: 12%;
+    height: 12%;
+    margin-left: 7%;
 }
 
+.results{
+    display: inline;
+}
+.create-btn{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: #f876c3;
+    font-family: 'Amariya-Bold';
+    background: linear-gradient(to right top, rgb(255, 255, 255,0.2), rgba(255, 255, 255, 0),rgba(255, 255, 255, 0));
+    border-radius: 20px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+    width: 30%;
+    padding-top: -10%;
+    padding-bottom: -10%;
+}
+
+.create-btn img{
+    width: 25%;
+    height: 25%;
+    margin-left: 10%;
+    margin-right: -5%;
+}
+
+.download-btn{
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    color: #f876c3;
+    font-family: 'Amariya-Bold';
+    background: linear-gradient(to right top, rgb(255, 255, 255,0.2), rgba(255, 255, 255, 0),rgba(255, 255, 255, 0));
+    border-radius: 80%;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+    width: 15%;
+    height: 10%;
+}
+
+.download-btn img{
+    width: 95%;
+}
 .no-scroll {
     overflow: hidden; /* Removes scrollbar */
 }

@@ -29,41 +29,52 @@
             <img src="./images/icons/text_to_speech.png" alt="محتوى مسموع" class="tts-icons">
             <span class="tts-titles"> محتوى مسموع </span> <br>
             <textarea id="tts-input" class="input-textarea no-scroll" placeholder="اكتب نصك الإبداعي هنا ليتم تحويله إلى صوت نابض بالحياة، سيتم عرض النص المقترح لفكرتك هنا.."></textarea> <br><br>
-    
-            <button id="create" class="btn-with-icon">
+            
+            <dive class="results">
+            <button id="create" class="create-btn">
                 <img src="./images/icons/create.png" alt="انشاء" class="btn-icon">
-                انشاء
+                انـشــاء
             </button>
-            <audio id="audio-result" controls hidden></audio>
-            <a id="download-link" href="#" download="audio.wav" hidden>تحميل</a>
+            <audio class="audio-res" id="audio-result" controls hidden></audio>
+            <button class="download-btn">
+            <img id="download-link" src="./images/icons/download.png" download="audio.wav" hidden>
+        </button>
+        </dive>
         </div>
         <div class="tts-buttons-div">
             <button id="create-voice-over" class="btn-with-icon">
-                <img src="./images/icons/voice_over.png" alt="انشئ تعليقًا صوتيًا" class="btn-icon">
-                انشئ تعليقًا صوتيًا
-            </button> <br>
+                <img src="./images/icons/voice_over.png" alt="عرّف عن مشروعك" class="btn-icon">
+                عرّف عن مشروعك
+            </button>
             <button id="create-boadcast" class="btn-with-icon">
                 <img src="./images/icons/broadcast.png" alt="قدّم بودكاست" class="btn-icon">
                 قدّم بودكاست
-            </button> <br><br>
-    
-            <select id="speaker-select" class="">
-                <option id="speaker1">المتحدث 1</option>
-                <option id="speaker2">المتحدث 2</option>
-            </select><br>
-    
-            <select id="speed-select" class="">
-                <option id="slow">بطيء</option>
-                <option id="regular">معتدل</option>
-                <option id="fast">سريع</option>
-            </select><br>
-    
-            <select id="music-select" class="">
-                <option id="no-music">بدون موسيقى</option>
-                <option id="music1">موسيقى 1</option>
-                <option id="music2">موسيقى 2</option>
-                <option id="music3">موسيقى 3</option>
+            </button>
+            <br><br>
+            <div class="select-container">
+            <select id="speaker-select" class="btn-with-icon">
+                <option disabled selected hidden>المتحدث</option>
+                <option id="speaker1" value="speaker1">نورة</option>
+                <option id="speaker2" value="speaker2">محمد</option>
             </select>
+            <img src="./images/icons/speaker.png" class="drop-icon"><br>
+            </div>
+            <div class="select-container">
+            <select id="speed-select" class="btn-with-icon">
+                <option disabled selected hidden>السرعة</option>
+                <option id="slow" value="slow">بطيئة</option>
+                <option id="regular" value="regular">معتدلة</option>
+                <option id="fast" value="fast">سريعة</option>
+            </select>
+            <img src="./images/icons/speed.png" class="drop-icon"><br></div>
+            <div class="select-container">
+            <select id="music-select" class="btn-with-icon">
+                <option disabled selected hidden>الموسيقى</option>
+                <option id="no-music" value="no-music">بدون موسيقى</option>
+                <option id="music1" value="music1">موسيقى قصصية</option>
+                <option id="music2" vlaue="music2">موسيقى إعلانية</option>
+            </select>
+            <img src="./images/icons/music.png" class="drop-icon"></div>
         </div>
     </div>
     
