@@ -184,46 +184,6 @@ header {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* TTS Model page specific styles */
-.tts-icons {
-    width: 50px;
-    height: 50px;
-    margin-left: 15px;
-    margin-bottom: -14px;
-}
-
-.tts-titles {
-    font-size: 50px;
-    font-weight: bold;
-    color: #ff6ec7;
-}
-
-.tts-inputs-div {
-    width: 60%;
-    align-items: right;
-    padding: 9%;
-}
-
-.tts-buttons-div {
-    width: 40%;
-    align-items: right;
-    padding: 9%;
-}
-
-.input-textarea {
-    background-color: #d4d3d7;
-    color:#1d143b;
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
-    width: 300px;
-    height: 200px;
-    padding: 3px;
-    resize: none;
-    overflow-y: scroll;
-}
-
-textarea::placeholder {
-    color: #1d143b;
-}
 
 
 /* Services Page main container */
@@ -517,12 +477,6 @@ textarea::placeholder {
     vertical-align: middle;
 }
 
-.tts-titles {
-    font-size: 18px;
-    margin-left: 10px;
-    color: #FF8DD1; /* Pink color */
-}
-
 .input-textarea {
     width: 100%;
     padding: 15px;
@@ -592,12 +546,12 @@ button:hover {
     margin-right: 10px;
 }
 
-.tts-titles {
-    color: #FF8DD1; /* Light pink for titles */
-}
+
 
 .tts-inputs-div .tts-icons {
-    margin-right: 10px;
+    margin: 10px;
+    height: 7.5%;
+    width: 10.5%;
 }
 
 .tts-buttons-div select option {
