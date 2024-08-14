@@ -519,12 +519,6 @@ textarea::placeholder {
     vertical-align: middle;
 }
 
-.tts-titles {
-    font-size: 18px;
-    margin-left: 10px;
-    color: #FF8DD1; /* Pink color */
-}
-
 .input-textarea {
     width: 100%;
     padding: 15px;
@@ -617,12 +611,12 @@ select:focus {
     margin-right: 10px;
 }
 
-.tts-titles {
-    color: #FF8DD1; /* Light pink for titles */
-}
+
 
 .tts-inputs-div .tts-icons {
-    margin-right: 10px;
+    margin: 10px;
+    height: 7.5%;
+    width: 10.5%;
 }
 
 .tts-buttons-div select option {
