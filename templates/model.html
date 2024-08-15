@@ -33,16 +33,22 @@
                 placeholder="اكتب نصك الإبداعي هنا ليتم تحويله إلى صوت نابض بالحياة، سيتم عرض النص المقترح لفكرتك هنا.."></textarea>
             <br><br>
 
-            <dive class="results">
+            <div class="results">
                 <button id="create" class="create-btn">
                     <img src="../static/images/icons/create.png" alt="انشاء" class="btn-icon">
                     انـشــاء
                 </button>
-                <audio class="audio-res" id="audio-result" controls hidden></audio>
+                <!-- Here I try to match the Audio like what in the UI of Our Website -->
+                <div class="custom-audio-player">
+                    <audio class="audio-res" id="audio-result"></audio>
+                    <button class="play-button" id="playButton">
+                        <div class="play-icon"></div>
+                    </button>
+                </div>
                 <button class="download-btn">
                     <img id="download-link" src="../static/images/icons/download.png" download="audio.wav" hidden>
                 </button>
-            </dive>
+            </div>
         </div>
         <div class="tts-buttons-div">
             <button id="create-voice-over" class="btn-with-icon">
