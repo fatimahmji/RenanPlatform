@@ -66,13 +66,7 @@ nav ul li a {
 
 /* Hover effect */
 nav ul li a:hover {
-    color: #ff6ec7; /* Hover color */
-}
-
-/* Hover effect */
-nav ul li a:hover {
-    color: #ff6ec7;
-    /* Hover color */
+    color: #f8a2d7; /* Hover color */
 }
 
 /* Active link styling */
