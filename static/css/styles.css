@@ -773,11 +773,7 @@ select:focus {
     padding: 0;
     margin-right: 180%;
     margin-left: 48px;
-<<<<<<< HEAD
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
-=======
-    margin-top: -5px;
->>>>>>> 4a097bf15487193a0060985cda6be03303e5e793
 }
 
 .play-icon {
@@ -801,11 +797,7 @@ select:focus {
     cursor: pointer;
     padding: 0;
     margin-left: -33%;
-<<<<<<< HEAD
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
-=======
-    margin-top: -5px;
->>>>>>> 4a097bf15487193a0060985cda6be03303e5e793
 }
 
 .download-btn img {
