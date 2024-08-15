@@ -277,7 +277,7 @@ header nav ul li a.active-link:hover::before {
 }
 
 .tts-titles {
-    font-size: 50px;
+    font-size: 35px;
     font-weight: bold;
     color: #ff6ec7;
 }
@@ -579,7 +579,7 @@ textarea::placeholder {
     padding: 20px;
     max-width: 1200px;
     margin: auto;
-    margin-top:-5%;
+    margin-top:-7.5%;
 }
 
 .tts-inputs-div {
@@ -607,13 +607,17 @@ textarea::placeholder {
     width: 100%;
     padding: 15px;
     border: none;
-    border-radius: 15px;
+    border-radius: 30px;
     margin-top: 10px;
-    background-color: #C4C4C4; /* Light gray background for text areas */
+    background-color: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8));/* Light gray background for text areas */
     color: #181238; /* Dark text color for readability */
     font-size: 16px;
     resize: none; /* Prevents resizing */
     overflow-y: hidden; /* Removes the scrollbar */
+    height: 80px;
+    margin: 10px;
+    margin-bottom: 5px
+    
 }
 
 button {
@@ -688,8 +692,8 @@ select:focus {
 
 .tts-inputs-div .tts-icons {
     margin: 10px;
-    height: 7.5%;
-    width: 10.5%;
+    height: 9.5%;
+    width: 9.5%;
 }
 
 .tts-buttons-div select option {
@@ -742,6 +746,7 @@ select:focus {
     margin-right: -15px;
     border: none;
     cursor: pointer;
+    margin-top: -5px;
 }
 
 .create-btn img {
@@ -768,6 +773,7 @@ select:focus {
     padding: 0;
     margin-right: 180%;
     margin-left: 48px;
+    margin-top: -5px;
 }
 
 .play-icon {
@@ -791,6 +797,7 @@ select:focus {
     cursor: pointer;
     padding: 0;
     margin-left: -33%;
+    margin-top: -5px;
 }
 
 .download-btn img {
