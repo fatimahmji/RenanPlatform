@@ -283,7 +283,7 @@ header nav ul li a.active-link:hover::before {
 }
 
 .tts-titles {
-    font-size: 50px;
+    font-size: 35px;
     font-weight: bold;
     color: #ff6ec7;
 }
@@ -585,7 +585,7 @@ textarea::placeholder {
     padding: 20px;
     max-width: 1200px;
     margin: auto;
-    margin-top:-5%;
+    margin-top:-6%;
 }
 
 .tts-inputs-div {
@@ -694,7 +694,7 @@ select:focus {
 
 .tts-inputs-div .tts-icons {
     margin: 10px;
-    height: 7.5%;
+    height: 10.5%;
     width: 10.5%;
 }
 
