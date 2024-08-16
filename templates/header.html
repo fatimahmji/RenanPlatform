@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 
 <body>
     <header>
         <nav>
             <ul>
-                <li><a href="../templates/index.html">الرئيسية</a></li>
-                <li><a href="../templates/services.html">خدماتنا</a></li>
-                <li><a href="../templates/about.html">عن رنـــان</a></li>
-                <li><a href="../templates/contact.html">تواصل معنا</a></li>
+                <li><a href="{{ url_for('index') }}">الرئيسية</a></li>
+                <li><a href="{{ url_for('services') }}">خدماتنا</a></li>
+                <li><a href="{{ url_for('about') }}">عن رنـــان</a></li>
+                <li><a href="{{ url_for('contact') }}">تواصل معنا</a></li>
             </ul>
         </nav>
         <img src="../static/images/logo/renan_logo.png" alt="رِنـــان" class="logo">

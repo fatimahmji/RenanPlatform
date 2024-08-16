@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>رِنـــان</title>
-    <link rel="stylesheet" href="../static/css/styles.css">
+    <title>{% block title %}رِنـــان{% endblock %}</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/logo/renan_logo.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            fetch('../templates/header.html')
+            fetch("{{ url_for('header') }}")
                 .then(response => response.text())
                 .then(data => {
                     // Insert the header into the page
@@ -41,11 +42,10 @@
                     نحوّل نصوصك إلى أصواتٍ مؤثرة، لنبدأ صوت المستقبل معًا
                 </span>
                 <div class="buttons-container">
-                    <button onclick="location.href='./services.html'" class="main-button secondary-button">اكـتـشـف
-                        خدمـاتـنـا</button>
-                    <button onclick="location.href='./model.html'" class="main-button primary-button">ابـدأ
-                        الآن</button>
+                    <button onclick="location.href='{{ url_for('services') }}'" class="main-button secondary-button">اكـتـشـف خدمـاتـنـا</button>
+                    <button onclick="location.href='{{ url_for('model_page') }}'" class="main-button primary-button">ابـدأ الآن</button>
                 </div>
+                
             </div>
             <div class="main-img">
                 <img src="../static/images/Main_Page/main_man.png" alt="Male" class="fade-image">
@@ -53,7 +53,7 @@
         </div>
     </div>
 
-    <script src="../static/js/script.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 
 </html>

@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>رِنـــان - TTS Model</title>
-    <link rel="stylesheet" href="../static/css/styles.css">
+    <title>{% block title %}رِنـــان - TTS Model{% endblock %}</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/logo/renan_logo.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            fetch('./header.html')
+            fetch("{{ url_for('header') }}")
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('header-placeholder').innerHTML = data;
@@ -71,9 +72,9 @@
             <div class="select-container">
                 <select id="speed-select" class="btn-with-icon">
                     <option disabled selected hidden>السرعة</option>
-                    <option id="slow" value="0.75">بطيئة</option>
-                    <option id="regular" value="1.00">معتدلة</option>
-                    <option id="fast" value="1.25">سريعة</option>
+                    <option id="slow" value="slow">بطيئة</option>
+                    <option id="regular" value="normal">معتدلة</option>
+                    <option id="fast" value="fast">سريعة</option>
                 </select>
                 <img src="../static/images/icons/speed.png" class="drop-icon"><br>
             </div>
@@ -90,7 +91,7 @@
     </div>
 
 
-    <script src="../static/js/script.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 
 </html>

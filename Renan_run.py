@@ -16,11 +16,11 @@ logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
 
 # Define paths for your model, output directory, and background music directory
-config_path = "/Users/fatimah/Desktop/TTS_mil/xtts-trainer-no-ui-auto/new_model/config.json"
-checkpoint_dir = "/Users/fatimah/Desktop/TTS_mil/xtts-trainer-no-ui-auto/new_model/"
-speaker_file_dir = "/Users/fatimah/Desktop/TTS_mil/xtts-trainer-no-ui-auto/GPT_XTTS_FT-August-03/speakers"
-output_dir = "/Users/fatimah/Desktop/TTS_mil/xtts-trainer-no-ui-auto/outputdir"
-bg_music_dir = "/Users/fatimah/Desktop/TTS_mil/xtts-trainer-no-ui-auto/music"
+config_path = "C:/tt/Web/Rennan_Platform/new_model/config.json"
+checkpoint_dir = "C:/tt/Web/Rennan_Platform/new_model/"
+speaker_file_dir = "C:/tt/Web/Rennan_Platform/speakers"
+output_dir = "C:/tt/Web/Rennan_Platform/Output"
+bg_music_dir = "C:/tt/Web/Rennan_Platform/RenanPlatform/static/audio/music"
 
 def load_model(config_path, checkpoint_dir):
     """Load the TTS model with given configuration and checkpoint."""
@@ -177,6 +177,6 @@ def generate_audio(model, speaker_id, phrases, output_dir, bg_music_filename=Non
 if __name__ == '__main__':
     text = "للعلم أو العمل .. للتذكر أو للنسيان .. للألفة أو للدهشة .. للاسترخاء أو للمغامرة .. لاكتشاف العالم أو لاكتشاف أنفسنا .. في هذه الحلقة نغوص في أعماق السفر كفكرة وغاية وحلم وتجربة .. نتعرف على تاريخه، ونبحر مع رواده، ونتأمل المشاعر خلفه الفراق، الحنين، الفضول، الإلهام، الخوف من المجهول، ودهشة الاكتشاف. ونسرد أجمل ما قيل عن السفر في الأدب والفنون. فما من روائي إلا وشغل السفر بعض فصول رواياته، وما من شاعر إلا وتناول السفر في إحدى قصائده، وما من مغنٍّ إلا وغنَّى عن السفر أو تغنى بالمسافر.. وأخيراً نشارك المستمعين وصايا ونصائح لسفر أجمل وتجارب أثرى ورحلات لا تنسى!"
     speaker_id = "speaker1"
-    bg_music_filename = "StorytellingBackgroundMusic.wav"
+    bg_music_filename = "music1.wav"
     speed = 'normal'
     generate_audio(model, speaker_id, [text], output_dir, bg_music_filename, speed)
