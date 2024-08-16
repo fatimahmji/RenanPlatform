@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+<<<<<<< HEAD
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,6 +14,23 @@
             document.getElementById("header-placeholder").innerHTML = data;
           });
       });
+=======
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}رِنـــان - TTS Model{% endblock %}</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/logo/renan_logo.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("{{ url_for('header') }}")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header-placeholder').innerHTML = data;
+                });
+        });
+>>>>>>> 484267685a735c59ec99d1016120931081b9f4fc
     </script>
   </head>
 
@@ -63,6 +81,7 @@
             <button class="play-button" id="playButton">
               <div class="play-icon"></div>
             </button>
+<<<<<<< HEAD
           </div>
           <button class="download-btn">
             <img
@@ -72,6 +91,39 @@
               hidden
             />
           </button>
+=======
+            <button id="create-boadcast" class="btn-with-icon">
+                <img src="../static/images/icons/broadcast.png" alt="قدّم بودكاست" class="btn-icon">
+                قدّم بودكاست
+            </button>
+            <br><br>
+            <div class="select-container">
+                <select id="speaker-select" class="btn-with-icon">
+                    <option disabled selected hidden>المتحدث</option>
+                    <option id="speaker1" value="speaker1">نورة</option>
+                    <option id="speaker2" value="speaker2">محمد</option>
+                </select>
+                <img src="../static/images/icons/speaker.png" class="drop-icon"><br>
+            </div>
+            <div class="select-container">
+                <select id="speed-select" class="btn-with-icon">
+                    <option disabled selected hidden>السرعة</option>
+                    <option id="slow" value="slow">بطيئة</option>
+                    <option id="regular" value="normal">معتدلة</option>
+                    <option id="fast" value="fast">سريعة</option>
+                </select>
+                <img src="../static/images/icons/speed.png" class="drop-icon"><br>
+            </div>
+            <div class="select-container">
+                <select id="music-select" class="btn-with-icon">
+                    <option disabled selected hidden>الموسيقى</option>
+                    <option id="no-music" value="no-music">بدون موسيقى</option>
+                    <option id="music1" value="music1">موسيقى قصصية</option>
+                    <option id="music2" vlaue="music2">موسيقى إعلانية</option>
+                </select>
+                <img src="../static/images/icons/music.png" class="drop-icon">
+            </div>
+>>>>>>> 484267685a735c59ec99d1016120931081b9f4fc
         </div>
       </div>
       <div class="tts-buttons-div">
@@ -124,6 +176,13 @@
       </div>
     </div>
 
+<<<<<<< HEAD
     <script src="../static/js/script.js"></script>
   </body>
+=======
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+>>>>>>> 484267685a735c59ec99d1016120931081b9f4fc
 </html>

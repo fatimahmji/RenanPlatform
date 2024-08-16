@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>رِنـــان - خدماتنا</title>
-    <link rel="stylesheet" href="../static/css/styles.css">
+    <title>{% block title %}رِنـــان - خدماتنا{% endblock %}</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/logo/renan_logo.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            fetch('../templates/header.html')
+            fetch("{{ url_for('header') }}")
                 .then(response => response.text())
                 .then(data => {
                     // Insert the header into the page
@@ -82,7 +83,7 @@
         </div>
 
 
-        <script src="../static/js/script.js"></script>
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 
 </html>
