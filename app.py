@@ -11,8 +11,8 @@ import os
 app = Flask(__name__)
 
 # Load the TTS model when the server starts
-config_path = "E:/new_model/config.json"
-checkpoint_dir = "E:/new_model/"
+config_path = "D:/new_model/config.json"
+checkpoint_dir = "D:/new_model"
 model = load_model(config_path, checkpoint_dir)
 
 # Configure Selenium WebDriver

@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const textToSet2 = "مرحبًا بكl."; // Change this to the text you want to set
 
  // Common function to handle the logic based on the button clicked
- function handleButtonClick(buttonType) {
+function handleButtonClick(buttonType) {
   if (buttonType === "create-voice-over") {
     // Set the audio element's source and make it visible
     audioElement.src = audioPath;
@@ -37,13 +37,12 @@ createVoiceOverButton.addEventListener("click", function () {
   handleButtonClick("create-voice-over");
 });
 
-<<<<<<< HEAD
 // Event listener for the "create-broadcast" button
 createBoadcastButton.addEventListener("click", function () {
   handleButtonClick("create-boadcast");
 });
 });
-=======
+
 document.getElementById('create').addEventListener('click', async function () {
   const textInput = document.getElementById('text-gen-input').value;
   const ttsInput = document.getElementById('tts-input');
@@ -105,4 +104,3 @@ document.getElementById('create').addEventListener('click', function() {
   })
   .catch(error => console.error('Error:', error));
 });
->>>>>>> b83e271cf9fdcc400a5387fa99f0699603b9eaa2
