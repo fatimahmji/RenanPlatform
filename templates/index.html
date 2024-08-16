@@ -14,7 +14,7 @@
                 .then(data => {
                     // Insert the header into the page
                     document.getElementById('header-placeholder').innerHTML = data;
-
+                    // fix it
                     // Get the current page URL
                     const currentPage = window.location.pathname.split("/").pop();
 
@@ -42,10 +42,12 @@
                     نحوّل نصوصك إلى أصواتٍ مؤثرة، لنبدأ صوت المستقبل معًا
                 </span>
                 <div class="buttons-container">
-                    <button onclick="location.href='{{ url_for('services') }}'" class="main-button secondary-button">اكـتـشـف خدمـاتـنـا</button>
-                    <button onclick="location.href='{{ url_for('model_page') }}'" class="main-button primary-button">ابـدأ الآن</button>
+                    <button onclick="location.href='{{ url_for('services') }}'"
+                        class="main-button secondary-button">اكـتـشـف خدمـاتـنـا</button>
+                    <button onclick="location.href='{{ url_for('model_page') }}'"
+                        class="main-button primary-button">ابـدأ الآن</button>
                 </div>
-                
+
             </div>
             <div class="main-img">
                 <img src="../static/images/Main_Page/main_man.png" alt="Male" class="fade-image">

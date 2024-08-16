@@ -14,21 +14,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const audioPath2 = "../static/audio/music/music2.wav"; // Change this to the actual path of your audio file
   const textToSet2 = "مرحبًا بكl."; // Change this to the text you want to set
 
-<<<<<<< HEAD
- // Common function to handle the logic based on the button clicked
-function handleButtonClick(buttonType) {
-  if (buttonType === "create-voice-over") {
-    // Set the audio element's source and make it visible
-    audioElement.src = audioPath;
-    audioElement.hidden = false;
-=======
   // Common function to handle the logic based on the button clicked
   function handleButtonClick(buttonType) {
     if (buttonType === "create-voice-over") {
       // Set the audio element's source and make it visible
       audioElement.src = audioPath;
       audioElement.hidden = false;
->>>>>>> 484267685a735c59ec99d1016120931081b9f4fc
 
       // Set the text area with the desired text
       ttsInputTextArea.value = textToSet;
@@ -47,22 +38,10 @@ function handleButtonClick(buttonType) {
     handleButtonClick("create-voice-over");
   });
 
-<<<<<<< HEAD
-// Event listener for the "create-broadcast" button
-createBoadcastButton.addEventListener("click", function () {
-  handleButtonClick("create-boadcast");
-});
-});
-
-document.getElementById('create').addEventListener('click', async function () {
-  const textInput = document.getElementById('text-gen-input').value;
-  const ttsInput = document.getElementById('tts-input');
-=======
   // Event listener for the "create-broadcast" button
   createBoadcastButton.addEventListener("click", function () {
     handleButtonClick("create-boadcast");
   });
->>>>>>> 484267685a735c59ec99d1016120931081b9f4fc
 
   document
     .getElementById("create")
@@ -130,36 +109,7 @@ document.getElementById('create').addEventListener('click', async function () {
             audioElement.play();
           })
           .catch((error) => console.error("Error:", error));
-          createButton.innerText = "انشاء";
+        createButton.innerText = "انشاء";
       }
     });
 });
-<<<<<<< HEAD
-
-document.getElementById('create').addEventListener('click', function() {
-  const text = document.getElementById('tts-input').value;
-  const speakerId = document.getElementById('speaker-select').value;
-  const speed = document.getElementById('speed-select').value;
-  const bgMusicFilename = document.getElementById('music-select').value;
-
-  fetch('/generate-audio', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-          text: text,
-          speaker_id: speakerId,
-          speed: speed,
-          bg_music_filename: bgMusicFilename
-      })
-  })
-  .then(response => response.blob())
-  .then(blob => {
-      const audioElement = document.getElementById('audio-result');
-      const audioURL = URL.createObjectURL(blob);
-      audioElement.src = audioURL;
-      audioElement.play();
-  })
-  .catch(error => console.error('Error:', error));
-});
-=======
->>>>>>> 484267685a735c59ec99d1016120931081b9f4fc
