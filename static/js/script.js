@@ -1,78 +1,79 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Get references to the elements
   const createVoiceOverButton = document.getElementById("create-voice-over");
-  const createBoadcastButton = document.getElementById("create-boadcast");
+  const createBroadcastButton = document.getElementById("create-boadcast");
   const audioElement = document.getElementById("audio-result");
   const ttsInputTextArea = document.getElementById("tts-input");
   const textGenInput = document.getElementById("text-gen-input");
   const createButton = document.getElementById("create");
 
-  // Define the paths and text you want to use
-  const audioPath = "D:/AI_Bayan_Project/Renan-Platform-1/RenanPlatform/speaker1.wav"; // Change this to the actual path of your audio file
-  const textToSet = "مرحبًا بكم في منصتنا، منصة الإبداع والتميز."; // Change this to the text you want to set
+  function resetCreateButton() {
+    createButton.innerHTML = `
+      <img src="../static/images/icons/create.png" alt="انشاء" class="btn-icon">
+      انـشــاء
+    `;
+    createButton.disabled = false;
+  }
 
-  const audioPath2 = "../static/audio/music/music2.wav"; // Change this to the actual path of your audio file
-  const textToSet2 = "مرحبًا بكl."; // Change this to the text you want to set
+  // Function to handle the pre-defined button logic
+  function handlePredefinedText(buttonType) {
+    const predefinedData = {
+      "create-voice-over": {
+        audioPath:
+          "D:/AI_Bayan_Project/Renan-Platform-1/RenanPlatform/speaker1.wav",
+        text: "مرحبًا بكم في منصتنا، منصة الإبداع والتميز.",
+      },
+      "create-boadcast": {
+        audioPath: "../static/audio/music/music2.wav",
+        text: "مرحبًا بك.",
+      },
+    };
 
-  // Common function to handle the logic based on the button clicked
-  function handleButtonClick(buttonType) {
-    if (buttonType === "create-voice-over") {
-      // Set the audio element's source and make it visible
-      audioElement.src = audioPath;
+    const selectedData = predefinedData[buttonType];
+    if (selectedData) {
+      audioElement.src = selectedData.audioPath;
       audioElement.hidden = false;
-
-      // Set the text area with the desired text
-      ttsInputTextArea.value = textToSet;
-    } else if (buttonType === "create-boadcast") {
-      // Set the audio element's source and make it visible
-      audioElement.src = audioPath2;
-      audioElement.hidden = false;
-
-      // Set the text area with the desired text
-      ttsInputTextArea.value = textToSet2;
+      ttsInputTextArea.value = selectedData.text;
     }
   }
 
-  // Event listener for the "create-voice-over" button
+  // Event listeners for pre-defined buttons
   createVoiceOverButton.addEventListener("click", function () {
-    handleButtonClick("create-voice-over");
-    audioElement.play(); // Automatically play the audio when the button is clicked
+    handlePredefinedText("create-voice-over");
   });
 
-  // Event listener for the "create-broadcast" button
-  createBoadcastButton.addEventListener("click", function () {
-    handleButtonClick("create-boadcast");
-    audioElement.play(); // Automatically play the audio when the button is clicked
+  createBroadcastButton.addEventListener("click", function () {
+    handlePredefinedText("create-boadcast");
   });
 
-  // Event listener for the create button
+  // Event listener for the "Create" button to generate audio
   createButton.addEventListener("click", async function () {
     const textInput = textGenInput.value;
     const ttsInput = ttsInputTextArea.value;
 
+    // Ensure only one text area is filled
     if (textInput && ttsInput) {
       alert("Please fill in only one text area at a time.");
       return;
     }
 
+    // If the user is generating new text
     if (textInput) {
       try {
-        // Fetch request to Flask API
+        createButton.innerHTML = "يتم إنتاج النص...";
+        createButton.disabled = true;
         const response = await fetch("/generate-text", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ input: textInput }),
         });
-        createButton.innerText = "يتم إنتاج النص...";
+
         const data = await response.json();
-        ttsInputTextArea.placeholder = "أملئ وقتك بالاستغفار...";
         const generatedText = data.generated_text;
 
         ttsInputTextArea.value = "";
         let i = 0;
-        const speed = 10; // Adjust typing speed
+        const speed = 10; // Typing speed
         function typeWriter() {
           if (i < generatedText.length) {
             ttsInputTextArea.value += generatedText.charAt(i);
@@ -81,19 +82,25 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         }
         typeWriter();
-        createButton.clear;
+        resetCreateButton();
       } catch (error) {
         console.error("Error:", error);
+        resetCreateButton();
       }
-    } else if (ttsInput) {
-      createButton.innerText = "يتم تحويل النص إل صوت";
+    }
+    // If the user is converting text to speech
+    else if (ttsInput) {
+      createButton.innerText = "يتم تحويل النص إل صوت...";
+      createButton.disabled = true;
       const text = ttsInput;
-      const speakerId = document.getElementById("speaker-select").value;
-      const speed = document.getElementById("speed-select").value;
-      const bgMusicFilename = document.getElementById("music-select").value
+      const speakerId =
+        document.getElementById("speaker-select").value || "speaker1"; // Default speaker
+      const speed = document.getElementById("speed-select").value || "1.00"; // Default speed
+      const bgMusicFilename =
+        document.getElementById("music-select").value || "no-music"; // Default to no music
 
-
-        fetch("/generate-audio", {
+      try {
+        const response = await fetch("/generate-audio", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -102,16 +109,18 @@ document.addEventListener("DOMContentLoaded", function () {
             speed: speed,
             bg_music_filename: bgMusicFilename,
           }),
-        })
-          .then((response) => response.blob())
-          .then((blob) => {
-            const audioElement = document.getElementById("audio-result");
-            const audioURL = URL.createObjectURL(blob);
-            audioElement.src = audioURL;
-            audioElement.play();
-          })
-          .catch((error) => console.error("Error:", error));
-        createButton.innerText = "انشاء";
+        });
+
+        const blob = await response.blob();
+        const audioURL = URL.createObjectURL(blob);
+        audioElement.src = audioURL;
+        audioElement.play();
+
+        resetCreateButton();
+      } catch (error) {
+        console.error("Error:", error);
+        resetCreateButton();
       }
-    });
+    }
+  });
 });
