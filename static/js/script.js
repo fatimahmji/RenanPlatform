@@ -36,60 +36,62 @@ document.addEventListener("DOMContentLoaded", function () {
   // Event listener for the "create-voice-over" button
   createVoiceOverButton.addEventListener("click", function () {
     handleButtonClick("create-voice-over");
+    audioElement.play(); // Automatically play the audio when the button is clicked
   });
 
   // Event listener for the "create-broadcast" button
   createBoadcastButton.addEventListener("click", function () {
     handleButtonClick("create-boadcast");
+    audioElement.play(); // Automatically play the audio when the button is clicked
   });
 
-  document
-    .getElementById("create")
-    .addEventListener("click", async function () {
-      const textInput = textGenInput.value;
-      const ttsInput = ttsInputTextArea.value;
+  // Event listener for the create button
+  createButton.addEventListener("click", async function () {
+    const textInput = textGenInput.value;
+    const ttsInput = ttsInputTextArea.value;
 
-      if (textInput && ttsInput) {
-        alert("Please fill in only one text area at a time.");
-        return;
-      }
+    if (textInput && ttsInput) {
+      alert("Please fill in only one text area at a time.");
+      return;
+    }
 
-      if (textInput) {
-        try {
-          // Fetch request to Flask API
-          const response = await fetch("/generate-text", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ input: textInput }),
-          });
-          createButton.innerText = "يتم إنتاج النص...";
-          const data = await response.json();
-          ttsInputTextArea.placeholder = "أملئ وقتك بالاستغفار...";
-          const generatedText = data.generated_text;
+    if (textInput) {
+      try {
+        // Fetch request to Flask API
+        const response = await fetch("/generate-text", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ input: textInput }),
+        });
+        createButton.innerText = "يتم إنتاج النص...";
+        const data = await response.json();
+        ttsInputTextArea.placeholder = "أملئ وقتك بالاستغفار...";
+        const generatedText = data.generated_text;
 
-          ttsInputTextArea.value = "";
-          let i = 0;
-          const speed = 10; // Adjust typing speed
-          function typeWriter() {
-            if (i < generatedText.length) {
-              ttsInputTextArea.value += generatedText.charAt(i);
-              i++;
-              setTimeout(typeWriter, speed);
-            }
+        ttsInputTextArea.value = "";
+        let i = 0;
+        const speed = 10; // Adjust typing speed
+        function typeWriter() {
+          if (i < generatedText.length) {
+            ttsInputTextArea.value += generatedText.charAt(i);
+            i++;
+            setTimeout(typeWriter, speed);
           }
-          typeWriter();
-          createButton.clear;
-        } catch (error) {
-          console.error("Error:", error);
         }
-      } else if (ttsInput) {
-        createButton.innerText = "يتم تحويل النص إل صوت";
-        const text = ttsInput;
-        const speakerId = document.getElementById("speaker-select").value;
-        const speed = document.getElementById("speed-select").value;
-        const bgMusicFilename = document.getElementById("music-select").value;
+        typeWriter();
+        createButton.clear;
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    } else if (ttsInput) {
+      createButton.innerText = "يتم تحويل النص إل صوت";
+      const text = ttsInput;
+      const speakerId = document.getElementById("speaker-select").value;
+      const speed = document.getElementById("speed-select").value;
+      const bgMusicFilename = document.getElementById("music-select").value
+
 
         fetch("/generate-audio", {
           method: "POST",

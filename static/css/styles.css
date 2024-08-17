@@ -746,7 +746,6 @@ select:focus {
     margin-right: -15px;
     border: none;
     cursor: pointer;
-    margin-top: -5px;
 }
 
 .create-btn img {

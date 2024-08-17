@@ -18,9 +18,9 @@ logging.basicConfig(level=logging.INFO)
 # Define paths for your model, output directory, and background music directory
 config_path = "D:/AI_Bayan_Project/xtts-trainer/main/config.json"
 checkpoint_dir = "D:/AI_Bayan_Project/xtts-trainer/main"
-speaker_file_dir = "D:/AI_Bayan_Project/Renan-Platform-1/RenanPlatform"
-output_dir = "D:/AI_Bayan_Project"
-bg_music_dir = "C:/tt/Web/Rennan_Platform/RenanPlatform/static/audio/music"
+speaker_file_dir = "D:/AI_Bayan_Project/Renan-Platform-1/RenanPlatform/static/audio/speakers"
+output_dir = "D:/AI_Bayan_Project/Renan-Platform-1/RenanPlatform/audioOutput"
+bg_music_dir = "D:/AI_Bayan_Project/Renan-Platform-1/RenanPlatform/static/audio/music"
 
 def load_model(config_path, checkpoint_dir):
     """Load the TTS model with given configuration and checkpoint."""

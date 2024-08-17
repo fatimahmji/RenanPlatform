@@ -90,7 +90,7 @@ def generate_audio_route():
     speed = data.get('speed', 'normal')
     bg_music_filename = data.get('bg_music_filename', None)
     
-    output_dir = "D:/AI_Bayan_Project"
+    output_dir = "D:/AI_Bayan_Project/Renan-Platform-1/RenanPlatform/audioOutput"
     
     # Generate audio
     generate_audio(model, speaker_id, [text], output_dir, bg_music_filename, speed)
