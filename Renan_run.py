@@ -16,10 +16,10 @@ logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
 
 # Define paths for your model, output directory, and background music directory
-config_path = "C:/tt/Web/Rennan_Platform/new_model/config.json"
-checkpoint_dir = "C:/tt/Web/Rennan_Platform/new_model/"
-speaker_file_dir = "C:/tt/Web/Rennan_Platform/speakers"
-output_dir = "C:/tt/Web/Rennan_Platform/Output"
+config_path = "D:/AI_Bayan_Project/xtts-trainer/main/config.json"
+checkpoint_dir = "D:/AI_Bayan_Project/xtts-trainer/main"
+speaker_file_dir = "D:/AI_Bayan_Project/Renan-Platform-1/RenanPlatform"
+output_dir = "D:/AI_Bayan_Project"
 bg_music_dir = "C:/tt/Web/Rennan_Platform/RenanPlatform/static/audio/music"
 
 def load_model(config_path, checkpoint_dir):

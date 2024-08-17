@@ -11,12 +11,13 @@ import os
 app = Flask(__name__)
 
 # Load the TTS model when the server starts
-config_path = "E:/new_model/config.json"
-checkpoint_dir = "E:/new_model/"
+config_path = "D:/AI_Bayan_Project/xtts-trainer/main/config.json"
+checkpoint_dir = "D:/AI_Bayan_Project/xtts-trainer/main"
 model = load_model(config_path, checkpoint_dir)
 
 # Configure Selenium WebDriver
 chrome_options = ChromeOptions()
+
 chrome_options.add_argument('--headless')  # Run in headless mode
 service = ChromeService(executable_path='/path/to/chromedriver')
 
@@ -89,7 +90,7 @@ def generate_audio_route():
     speed = data.get('speed', 'normal')
     bg_music_filename = data.get('bg_music_filename', None)
     
-    output_dir = "D:/Renan_Website"
+    output_dir = "D:/AI_Bayan_Project"
     
     # Generate audio
     generate_audio(model, speaker_id, [text], output_dir, bg_music_filename, speed)

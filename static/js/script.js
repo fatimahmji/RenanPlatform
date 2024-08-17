@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const createButton = document.getElementById("create");
 
   // Define the paths and text you want to use
-  const audioPath = "../static/audio/music/music1.wav"; // Change this to the actual path of your audio file
+  const audioPath = "D:/AI_Bayan_Project/Renan-Platform-1/RenanPlatform/speaker1.wav"; // Change this to the actual path of your audio file
   const textToSet = "مرحبًا بكم في منصتنا، منصة الإبداع والتميز."; // Change this to the text you want to set
 
   const audioPath2 = "../static/audio/music/music2.wav"; // Change this to the actual path of your audio file
