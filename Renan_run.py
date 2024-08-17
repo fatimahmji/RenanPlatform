@@ -16,11 +16,11 @@ logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
 
 # Define paths for your model, output directory, and background music directory
-config_path = "D:/AI_Bayan_Project/xtts-trainer/main/config.json"
-checkpoint_dir = "D:/AI_Bayan_Project/xtts-trainer/main"
-speaker_file_dir = "D:/AI_Bayan_Project/Renan-Platform-1/RenanPlatform/static/audio/speakers"
-output_dir = "D:/AI_Bayan_Project/Renan-Platform-1/RenanPlatform/audioOutput"
-bg_music_dir = "D:/AI_Bayan_Project/Renan-Platform-1/RenanPlatform/static/audio/music"
+config_path = "D:/Renan_Website/new_model/config.json"
+checkpoint_dir = "D:/Renan_Website/new_model"
+speaker_file_dir = "D:/Renan_Website/Speakers"
+output_dir = "D:/Renan_Website/Output"
+bg_music_dir = "D:/Renan_Website/RenanPlatform/static/audio/music/"
 
 def load_model(config_path, checkpoint_dir):
     """Load the TTS model with given configuration and checkpoint."""
@@ -32,7 +32,7 @@ def load_model(config_path, checkpoint_dir):
     model = Xtts.init_from_config(config)
     model.load_checkpoint(config, checkpoint_dir=checkpoint_dir, use_deepspeed=False)
     # Ensure model is on CPU
-    model.to(torch.device('cpu'))
+    model.to(torch.device("cuda"))
     return model
 
 # Load model when the script is first executed
@@ -117,7 +117,7 @@ def generate_audio(model, speaker_id, phrases, output_dir, bg_music_filename=Non
     
     bg_music = None
     if bg_music_filename:
-        bg_music_path = os.path.join(bg_music_dir, bg_music_filename)
+        bg_music_path = os.path.join(bg_music_dir, f"{bg_music_filename}.wav")
         if os.path.exists(bg_music_path):
             bg_music, _ = torchaudio.load(bg_music_path, normalize=True)
             if bg_music.shape[0] > 1:
@@ -171,12 +171,3 @@ def generate_audio(model, speaker_id, phrases, output_dir, bg_music_filename=Non
         
         torchaudio.save(output_path, final_audio, 24000)
         print(f"Generated audio saved to: {output_path}")
-
-
-
-if __name__ == '__main__':
-    text = "للعلم أو العمل .. للتذكر أو للنسيان .. للألفة أو للدهشة .. للاسترخاء أو للمغامرة .. لاكتشاف العالم أو لاكتشاف أنفسنا .. في هذه الحلقة نغوص في أعماق السفر كفكرة وغاية وحلم وتجربة .. نتعرف على تاريخه، ونبحر مع رواده، ونتأمل المشاعر خلفه الفراق، الحنين، الفضول، الإلهام، الخوف من المجهول، ودهشة الاكتشاف. ونسرد أجمل ما قيل عن السفر في الأدب والفنون. فما من روائي إلا وشغل السفر بعض فصول رواياته، وما من شاعر إلا وتناول السفر في إحدى قصائده، وما من مغنٍّ إلا وغنَّى عن السفر أو تغنى بالمسافر.. وأخيراً نشارك المستمعين وصايا ونصائح لسفر أجمل وتجارب أثرى ورحلات لا تنسى!"
-    speaker_id = "speaker1"
-    bg_music_filename = "music1.wav"
-    speed = 'normal'
-    generate_audio(model, speaker_id, [text], output_dir, bg_music_filename, speed)
