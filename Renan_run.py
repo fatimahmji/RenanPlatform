@@ -38,11 +38,11 @@ def load_model(config_path, checkpoint_dir):
     # Initialize and load the model
     model = Xtts.init_from_config(config)
     model.load_checkpoint(config, checkpoint_dir=checkpoint_dir, use_deepspeed=False)
-
+    model.to(torch.device('cuda'))
     return model
 
 # Load model when the script is first executed
-model = load_model(config_path, checkpoint_dir).to(device)
+model = load_model(config_path, checkpoint_dir)
 
 def split_text(text, max_chars=200):
     """Split the text into smaller chunks based on character count."""
@@ -78,17 +78,17 @@ def adjust_parameters(mean_mfccs):
     """Adjust generation parameters based on MFCC analysis."""
     temperature = 0.7
     if np.mean(mean_mfccs) > 0.5:  # Adjust this threshold based on your data
-        temperature = 0.75
+        temperature = 1.2
 
     return {
         "temperature": temperature,
-        "length_penalty": 1.00,
-        "repetition_penalty": 2.0,
+        "length_penalty": 0.85,
+        "repetition_penalty": 2.5,
         "top_k": 65,
         "top_p": 0.95
     }
 
-def add_background_music(speech, bg_music, speech_volume=1.0, music_volume=0.1):
+def add_background_music(speech, bg_music, speech_volume=1.0, music_volume=0.5):
     """Mix background music with speech without fade-in and fade-out effects."""
     if bg_music.shape[1] < speech.shape[1]:
         repeat_times = (speech.shape[1] // bg_music.shape[1]) + 1

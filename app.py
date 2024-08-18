@@ -16,12 +16,10 @@ app = Flask(__name__)
 # Load the TTS model when the server starts
 config_path = "D:/Renan/new_model/config.json"
 checkpoint_dir = "D:/Renan/new_model"
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-model = load_model(config_path, checkpoint_dir).to(device)
+model = load_model(config_path, checkpoint_dir)
 
 # Configure Selenium WebDriver
 chrome_options = ChromeOptions()
-
 chrome_options.add_argument('--headless')  # Run in headless mode
 service = ChromeService(executable_path="D:/Renan/chromedriver-win64/chromedriver.exe")
 
@@ -50,10 +48,15 @@ def model_page():
 def contact():
     return render_template('contact.html')
 
-# Route for the "Header" (corrected the function name)
+# Route for the "Header" page
 @app.route('/header')
 def header():
     return render_template('header.html')
+
+# Route for the "Footer" page
+@app.route('/footer')
+def footer():
+    return render_template('footer.html')
 
 # API endpoint for generating text using Selenium
 @app.route('/generate-text', methods=['POST'])
