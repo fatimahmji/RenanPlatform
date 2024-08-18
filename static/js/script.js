@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const ttsInputTextArea = document.getElementById("tts-input");
   const textGenInput = document.getElementById("text-gen-input");
   const createButton = document.getElementById("create");
+  const playButton = document.getElementById("playButton");
+  const playIcon = playButton.querySelector(".play-icon");
 
   function resetCreateButton() {
     createButton.innerHTML = `
@@ -15,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
     createButton.disabled = false;
   }
 
-  function resetTextGen(){
+  function resetTextGen() {
     textGenInput.innerHTML = `<textarea id="text-gen-input" class="input-textarea no-scroll" style="height: 80px;"
               placeholder="اكتب فكرتك هنا ليتم انشاء نص إبداعي لها.."></textarea> <br>`;
   }
@@ -24,12 +26,11 @@ document.addEventListener("DOMContentLoaded", function () {
   function handlePredefinedText(buttonType) {
     const predefinedData = {
       "create-voice-over": {
-        audioPath:
-          "D:/AI_Bayan_Project/Renan-Platform-1/RenanPlatform/speaker1.wav",
+        audioPath: "../static/audio/test1.wav",
         text: "مرحبًا بكم في منصتنا، منصة الإبداع والتميز.",
       },
       "create-boadcast": {
-        audioPath: "../static/audio/music/music2.wav",
+        audioPath: "../static/audio/test2.wav",
         text: "مرحبًا بك.",
       },
     };
@@ -58,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Ensure only one text area is filled
     if (textInput && ttsInput) {
-      alert("الرجاء أملئ فقط واحده من الخانات فقط");
+      alert("الرجاء أملئ فقط واحدة من الخانات فقط");
       return;
     }
 
@@ -96,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     // If the user is converting text to speech
     else if (ttsInput) {
-      createButton.innerText = "يتم تحويل النص إل صوت...";
+      createButton.innerText = "يتم تحويل النص إلى صوت...";
       createButton.disabled = true;
       const text = ttsInput;
       const speakerId =
@@ -128,5 +129,24 @@ document.addEventListener("DOMContentLoaded", function () {
         resetCreateButton();
       }
     }
+  });
+
+  // Toggle play and pause functionality for the playButton
+  playButton.addEventListener("click", function () {
+    if (audioElement.paused) {
+      audioElement.play();
+      playIcon.classList.remove("play-icon");
+      playIcon.classList.add("pause-icon");
+    } else {
+      audioElement.pause();
+      playIcon.classList.remove("pause-icon");
+      playIcon.classList.add("play-icon");
+    }
+  });
+
+  // Automatically reset to the play icon when the audio ends
+  audioElement.addEventListener("ended", function () {
+    playIcon.classList.remove("pause-icon");
+    playIcon.classList.add("play-icon");
   });
 });
