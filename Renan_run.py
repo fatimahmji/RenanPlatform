@@ -10,33 +10,39 @@ from TTS.tts.models.xtts import Xtts
 import logging
 import time
 import re
+import warnings
+
+warnings.filterwarnings("ignore")
 
 # Setup logging
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
 
 # Define paths for your model, output directory, and background music directory
-config_path = "D:/Renan_Website/new_model/config.json"
-checkpoint_dir = "D:/Renan_Website/new_model"
-speaker_file_dir = "D:/Renan_Website/Speakers"
-output_dir = "D:/Renan_Website/Output"
-bg_music_dir = "D:/Renan_Website/RenanPlatform/static/audio/music/"
+config_path = "D:/Renan/new_model/config.json"
+checkpoint_dir = "D:/Renan/new_model"
+speaker_file_dir = "D:/Renan/Speakers"
+output_dir = "D:/Renan/Output"
+bg_music_dir = "D:/Renan/RenanPlatform/static/audio/music"
+
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 def load_model(config_path, checkpoint_dir):
     """Load the TTS model with given configuration and checkpoint."""
     print("Loading model...")
+
     # Load model configuration
     config = XttsConfig()
     config.load_json(config_path)
+
     # Initialize and load the model
     model = Xtts.init_from_config(config)
     model.load_checkpoint(config, checkpoint_dir=checkpoint_dir, use_deepspeed=False)
-    # Ensure model is on CPU
-    model.to(torch.device("cuda"))
+
     return model
 
 # Load model when the script is first executed
-model = load_model(config_path, checkpoint_dir)
+model = load_model(config_path, checkpoint_dir).to(device)
 
 def split_text(text, max_chars=200):
     """Split the text into smaller chunks based on character count."""

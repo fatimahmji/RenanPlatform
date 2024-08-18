@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, jsonify, send_file
+import torch
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.chrome.options import Options as ChromeOptions
@@ -13,15 +14,16 @@ import os
 app = Flask(__name__)
 
 # Load the TTS model when the server starts
-config_path = "D:/Renan_Website/new_model/config.json"
-checkpoint_dir = "D:/Renan_Website/new_model"
-model = load_model(config_path, checkpoint_dir)
+config_path = "D:/Renan/new_model/config.json"
+checkpoint_dir = "D:/Renan/new_model"
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+model = load_model(config_path, checkpoint_dir).to(device)
 
 # Configure Selenium WebDriver
 chrome_options = ChromeOptions()
 
 chrome_options.add_argument('--headless')  # Run in headless mode
-service = ChromeService(executable_path="D:/Renan_Website/chromedriver-win64/chromedriver.exe")
+service = ChromeService(executable_path="D:/Renan/chromedriver-win64/chromedriver.exe")
 
 # Route for the main page
 @app.route('/')
@@ -73,7 +75,7 @@ def generate_text():
         input_field.send_keys(user_input)
 
         # Wait until the generate button is clickable and then click it
-        generate_button = WebDriverWait(driver, 20).until(
+        generate_button = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.ID, 'main_btn'))
         )
 
@@ -82,7 +84,7 @@ def generate_text():
         driver.execute_script("arguments[0].click();", generate_button)
 
         # Wait for the output to appear
-        WebDriverWait(driver, 10).until(
+        WebDriverWait(driver, 15).until(
             EC.visibility_of_element_located((By.ID, 'output'))
         )
 
@@ -93,9 +95,11 @@ def generate_text():
         # Use BeautifulSoup to parse the HTML and extract the text
         soup = BeautifulSoup(output_html, 'html.parser')
         output_text = ''.join(p.get_text() for p in soup.find_all('p'))
+
     finally:
         driver.quit()
 
+    # Return the sanitized text as JSON
     return jsonify({'generated_text': output_text})
 
 # API endpoint for generating audio using the pre-trained model
@@ -107,7 +111,7 @@ def generate_audio_route():
     speed = data.get('speed', 'normal')
     bg_music_filename = data.get('bg_music_filename', None)
     
-    output_dir = "D:/Renan_Website/Output"
+    output_dir = "D:/Renan/Output"
     
     # Generate audio
     generate_audio(model, speaker_id, [text], output_dir, bg_music_filename, speed)

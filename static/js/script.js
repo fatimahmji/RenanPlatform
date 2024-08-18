@@ -15,6 +15,11 @@ document.addEventListener("DOMContentLoaded", function () {
     createButton.disabled = false;
   }
 
+  function resetTextGen(){
+    textGenInput.innerHTML = `<textarea id="text-gen-input" class="input-textarea no-scroll" style="height: 80px;"
+              placeholder="اكتب فكرتك هنا ليتم انشاء نص إبداعي لها.."></textarea> <br>`;
+  }
+
   // Function to handle the pre-defined button logic
   function handlePredefinedText(buttonType) {
     const predefinedData = {
@@ -53,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Ensure only one text area is filled
     if (textInput && ttsInput) {
-      alert("Please fill in only one text area at a time.");
+      alert("الرجاء أملئ فقط واحده من الخانات فقط");
       return;
     }
 
@@ -83,6 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         typeWriter();
         resetCreateButton();
+        resetTextGen();
       } catch (error) {
         console.error("Error:", error);
         resetCreateButton();
