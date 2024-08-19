@@ -19,11 +19,11 @@ logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
 
 # Define paths for your model, output directory, and background music directory
-config_path = "D:/Renan/new_model/config.json"
-checkpoint_dir = "D:/Renan/new_model"
-speaker_file_dir = "D:/Renan/Speakers"
-output_dir = "D:/Renan/Output"
-bg_music_dir = "D:/Renan/RenanPlatform/static/audio/music"
+config_path = "D:/AI_Bayan_Project/xtts-trainer/main/config.json"
+checkpoint_dir = "D:/AI_Bayan_Project/xtts-trainer/main"
+speaker_file_dir = "D:/AI_Bayan_Project/Renan-Platform-1/Speakers"
+output_dir = "./audioOutput"
+bg_music_dir = "./static/audio/music"
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -38,7 +38,7 @@ def load_model(config_path, checkpoint_dir):
     # Initialize and load the model
     model = Xtts.init_from_config(config)
     model.load_checkpoint(config, checkpoint_dir=checkpoint_dir, use_deepspeed=False)
-    model.to(torch.device('cuda'))
+    model.to(torch.device('cpu'))
     return model
 
 # Load model when the script is first executed

@@ -342,8 +342,7 @@ textarea::placeholder {
 .content-services {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 40px;
-    max-height: 50%;
+    margin-top: 5%;
 }
 
 /* Row container for service cards */
@@ -357,7 +356,7 @@ textarea::placeholder {
 
 .card-row-services.soon {
     justify-content: flex-start;
-    margin-right: 100px;
+    margin-right: 50px;
 }
 
 
@@ -431,11 +430,9 @@ textarea::placeholder {
 .section-title-services {
     display: flex;
     justify-content: flex-start;
-    /* Align items to the right */
     align-items: center;
-    /* Center align vertically */
     margin-bottom: 20px;
-    margin-right: 90px;
+    margin-right: 50px;
 }
 
 .soon-text {
@@ -895,16 +892,19 @@ select:focus {
 
 .footer-container {
     text-align: center;
+    display: inline-block;
 }
 
 .footer-container p {
-    margin-top: -2.5%;
-    font-size: 16px;
+    font-size: 20px;
     color: #ffffff;
+    margin: 2%;
 }
 
 .footer-container img {
     max-width: 50%;
+    margin-bottom: -5%;
+    margin-top: -15px;
 }
 
 

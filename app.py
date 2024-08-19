@@ -14,8 +14,8 @@ import os
 app = Flask(__name__)
 
 # Load the TTS model when the server starts
-config_path = "D:/Renan/new_model/config.json"
-checkpoint_dir = "D:/Renan/new_model"
+config_path = "D:/AI_Bayan_Project/xtts-trainer/main/config.json"
+checkpoint_dir = "D:/AI_Bayan_Project/xtts-trainer/main"
 model = load_model(config_path, checkpoint_dir)
 
 # Configure Selenium WebDriver
@@ -114,7 +114,7 @@ def generate_audio_route():
     speed = data.get('speed', 'normal')
     bg_music_filename = data.get('bg_music_filename', None)
     
-    output_dir = "D:/Renan/Output"
+    output_dir = "./audioOutput"
     
     # Generate audio
     generate_audio(model, speaker_id, [text], output_dir, bg_music_filename, speed)
