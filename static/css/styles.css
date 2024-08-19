@@ -340,7 +340,7 @@ textarea::placeholder {
 
 /* Services Page main container */
 .content-services {
-    max-width: 1200px;
+    max-width: 90%;
     margin: 0 auto;
     margin-top: 5%;
 }
@@ -351,39 +351,31 @@ textarea::placeholder {
     justify-content: center;
     margin-bottom: 1.5%;
     gap: 40px;
-
+    flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
 }
 
 .card-row-services.soon {
     justify-content: flex-start;
     margin-right: 50px;
+    gap: 20px; /* Adjust spacing for better wrapping */
 }
 
-
-.card-services {
+.card-services, .card-services-soon {
     border-radius: 40px;
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
     padding: 30px;
     text-align: center;
-    width: 20%;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
     max-width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     background: linear-gradient(to right top, rgb(255, 255, 255, 0.1), rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+    margin-bottom: 20px;
 }
 
 /* Special styling for 'soon' cards */
 .card-services-soon {
     background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8));
     color: #0f0e35;
-    border-radius: 40px;
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
-    padding: 30px;
-    text-align: center;
-    width: 20%;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: 20%;
-    max-width: 300px;
-    margin-right: 5%;
 }
 
 /* Hover effect for service cards */
@@ -444,16 +436,13 @@ textarea::placeholder {
 
 .soon-divider {
     width: 70%;
-    /* Adjust this value to control the width of the divider */
     height: auto;
-    /* Ensure the height is automatically adjusted */
     display: inline-block;
     margin-top: 15px;
 }
 
-
 /* Remove right margin for the last card in the row */
-.card-row-services>div:last-child {
+.card-row-services > div:last-child {
     margin-right: 0;
 }
 
@@ -566,7 +555,7 @@ textarea::placeholder {
 }
 
 /* Name styling inside contact cards */
-.card span {
+.card .name {
     display: block;
     margin-top: 50px;
     font-size: 30px;
@@ -575,6 +564,14 @@ textarea::placeholder {
     font-family: 'Amariya-bold', sans-serif;
 }
 
+.card .pos {
+    display: block;
+    margin-top: 2px;
+    font-size: 19px;
+    color: #ffffff;
+    font-weight: bold;
+    font-family: 'Amariya-bold', sans-serif;
+}
 /* Contact icon container */
 .contact-icons {
     display: flex;
@@ -907,31 +904,181 @@ select:focus {
     margin-top: -15px;
 }
 
-
-
-
-/* Responsive Styles */
-@media (min-width: 768px) {
-    header {
-        padding: 0 10%;
+/* Mobile Screens (max-width: 480px) */
+@media (max-width: 480px) {
+    nav ul {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     nav ul li {
-        margin: 0 20px;
+        margin: 10px 0;
     }
 
-    .logo {
-        height: 8%;
-        width: 8%;
+    header {
+        flex-direction: column;
+        padding: 10px;
     }
 
     .main-content {
-        flex-direction: row;
-        text-align: left;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
     }
 
     .main-img {
-        max-width: 40%;
+        max-width: 100%;
+        margin: 0;
+    }
+
+    .main-text span {
+        font-size: 36px;
+    }
+
+    .buttons-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .card-row-services {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .card-services,
+    .card-services-soon {
+        width: 80%;
+        max-width: 300px;
+    }
+
+    .content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card-about {
+        width: 80%;
+        max-width: 300px;
+    }
+
+    #contact-page .contact {
+        flex-direction: column;
+    }
+
+    .card {
+        width: 80%;
+        max-width: 250px;
+    }
+
+    .content-tts-model {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .tts-inputs-div,
+    .tts-buttons-div {
+        width: 90%;
+        margin: 0;
+    }
+
+    .input-textarea {
+        width: 100%;
+        height: 120px;
+    }
+}
+
+/* Tablet Screens (max-width: 768px) */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 15px 0;
+    }
+
+    header {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .main-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .main-img {
+        max-width: 60%;
+    }
+
+    .main-text span {
+        font-size: 48px;
+    }
+
+    .buttons-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .card-row-services {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .card-services,
+    .card-services-soon {
+        width: 60%;
+    }
+
+    .content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card-about {
+        width: 60%;
+    }
+
+    #contact-page .contact {
+        flex-direction: column;
+    }
+
+    .card {
+        width: 60%;
+    }
+
+    .content-tts-model {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .tts-inputs-div,
+    .tts-buttons-div {
+        width: 80%;
+    }
+
+    .input-textarea {
+        width: 100%;
+        height: 150px;
+    }
+}
+
+/* Small Desktop Screens (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .main-content {
+        gap: 40px;
+    }
+
+    .main-img {
+        max-width: 50%;
     }
 
     .main-text span {
@@ -939,76 +1086,87 @@ select:focus {
     }
 
     .buttons-container {
-        flex-direction: row;
+        gap: 20px;
     }
 
     .card-row-services {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
+        gap: 40px;
+    }
+
+    .card-services,
+    .card-services-soon {
+        width: 40%;
+    }
+
+    .card-about {
+        width: 40%;
+    }
+
+    .card {
+        width: 40%;
+    }
+
+    .content-tts-model {
+        gap: 40px;
+    }
+
+    .tts-inputs-div,
+    .tts-buttons-div {
+        width: 70%;
+    }
+
+    .input-textarea {
+        width: 100%;
+        height: 180px;
+    }
+}
+
+/* Medium Desktop Screens (max-width: 1220px) */
+@media (max-width: 1220px) {
+    .main-content {
+        gap: 50px;
+    }
+
+    .main-img {
+        max-width: 45%;
+    }
+
+    .main-text span {
+        font-size: 68px;
+    }
+
+    .buttons-container {
+        gap: 25px;
+    }
+
+    .card-row-services {
+        gap: 50px;
+    }
+
+    .card-services,
+    .card-services-soon {
+        width: 30%;
+    }
+
+    .card-about {
+        width: 30%;
     }
 
     .card {
         width: 30%;
     }
 
-    
-
-    
-}
-
-@media (min-width: 1024px) {
-    header {
-        padding: 0 15%;
+    .content-tts-model {
+        gap: 50px;
     }
 
-    .main-content {
-        max-width: 1200px;
-        margin: 0 auto;
+    .tts-inputs-div,
+    .tts-buttons-div {
+        width: 60%;
     }
 
-    .main-text span {
-        font-size: 72px;
-    }
-
-    .card {
-        width: 22%;
-    }
-}
-
-/* Additional media queries for larger screens (e.g., 4K monitors) */
-@media (min-width: 1440px) {
-    header {
-        padding: 0 20%;
-    }
-
-    .main-content {
-        max-width: 1400px;
-    }
-
-    .main-text span {
-        font-size: 75px;
-    }
-
-    .card {
-        width: 18%;
-    }
-}
-
-@media (min-width: 2560px) {
-    header {
-        padding: 0 25%;
-    }
-
-    .main-content {
-        max-width: 2000px;
-    }
-
-    .main-text span {
-        font-size: 120px;
-    }
-
-    .card {
-        width: 15%;
+    .input-textarea {
+        width: 100%;
+        height: 200px;
     }
 }
