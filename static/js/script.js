@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const predefinedData = {
       "create-voice-over": {
         audioPath: "../audio/samples/RenanSample.wav",
-        text: "مرحبًا بكم في منصتنا، منصة الإبداع والتميز.",
+        text: "خَل صُوتِك يَبرِز مَع رِنان سَواء كِنت تِحتَاج تَعليق صَوتِي احترافي،أو تبغَى تحَسّن إنتاجِك، رِسَالتِك مَعْنَا تُسْمَع! هذا هو رِنان.",
       },
       "create-boadcast": {
         audioPath: "../audio/samples/bodcastSample.wav",
