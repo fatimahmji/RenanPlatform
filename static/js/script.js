@@ -26,12 +26,12 @@ document.addEventListener("DOMContentLoaded", function () {
   function handlePredefinedText(buttonType) {
     const predefinedData = {
       "create-voice-over": {
-        audioPath: "../static/audio/test1.wav",
+        audioPath: "../audio/samples/RenanSample.wav",
         text: "مرحبًا بكم في منصتنا، منصة الإبداع والتميز.",
       },
       "create-boadcast": {
-        audioPath: "../static/audio/test2.wav",
-        text: "مرحبًا بك.",
+        audioPath: "../audio/samples/bodcastSample.wav",
+        text: "!كِلنا عِنْدِنا صُندوقْ أفْكار، فِكرة جَتْنَا فِي، السيارة اوالطَيَّارة، و المَدرسة اوالعَمَل، لَمَّا ضَحَك لِنا الحَظ، أو خَاننا التَّعْبِير. اليوم بِنِتحَدث عَن كيف مُمكِن نعبِّر عَن أفكارنا، ونَسْتَعرِض مَعكُم أشهر الشركات في هذا المجال ",
       },
     };
 
