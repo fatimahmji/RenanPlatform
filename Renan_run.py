@@ -10,34 +10,28 @@ from TTS.tts.models.xtts import Xtts
 import logging
 import time
 import re
-import warnings
-
-warnings.filterwarnings("ignore")
 
 # Setup logging
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
 
 # Define paths for your model, output directory, and background music directory
-config_path = "D:/AI_Bayan_Project/xtts-trainer/main/config.json"
-checkpoint_dir = "D:/AI_Bayan_Project/xtts-trainer/main"
-speaker_file_dir = "D:/AI_Bayan_Project/Renan-Platform-1/Speakers"
-output_dir = "./audioOutput"
-bg_music_dir = "./static/audio/music"
-
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+config_path = "/Users/fatimah/Desktop/TTS_mil/xtts-trainer-no-ui-auto/new_model/config.json"
+checkpoint_dir = "/Users/fatimah/Desktop/TTS_mil/xtts-trainer-no-ui-auto/new_model/"
+speaker_file_dir = "/Users/fatimah/Desktop/TTS_mil/xtts-trainer-no-ui-auto/GPT_XTTS_FT-August-03/speakers"
+output_dir = "/Users/fatimah/Desktop/TTS_mil/xtts-trainer-no-ui-auto/outputdir"
+bg_music_dir ="/Users/fatimah/Desktop/TTS_mil/xtts-trainer-no-ui-auto/music"
 
 def load_model(config_path, checkpoint_dir):
     """Load the TTS model with given configuration and checkpoint."""
     print("Loading model...")
-
     # Load model configuration
     config = XttsConfig()
     config.load_json(config_path)
-
     # Initialize and load the model
     model = Xtts.init_from_config(config)
     model.load_checkpoint(config, checkpoint_dir=checkpoint_dir, use_deepspeed=False)
+    # Ensure model is on CPU
     model.to(torch.device('cpu'))
     return model
 
@@ -82,9 +76,9 @@ def adjust_parameters(mean_mfccs):
 
     return {
         "temperature": temperature,
-        "length_penalty": 0.85,
-        "repetition_penalty": 2.5,
-        "top_k": 65,
+        "length_penalty": 0.80,
+        "repetition_penalty": 2.0,
+        "top_k": 60,
         "top_p": 0.95
     }
 
@@ -123,7 +117,7 @@ def generate_audio(model, speaker_id, phrases, output_dir, bg_music_filename=Non
     
     bg_music = None
     if bg_music_filename:
-        bg_music_path = os.path.join(bg_music_dir, f"{bg_music_filename}.wav")
+        bg_music_path = os.path.join(bg_music_dir, bg_music_filename)
         if os.path.exists(bg_music_path):
             bg_music, _ = torchaudio.load(bg_music_path, normalize=True)
             if bg_music.shape[0] > 1:
@@ -136,6 +130,11 @@ def generate_audio(model, speaker_id, phrases, output_dir, bg_music_filename=Non
         chunks = split_text(phrase, max_chars=200)
         combined_audio = []
 
+        # Analyze the speaker's audio file
+        mean_mfccs = analyze_audio(speaker_file)
+        # Adjust the model parameters based on the analysis
+        params = adjust_parameters(mean_mfccs)
+
         for i, chunk in enumerate(chunks):
             start_time = time.time()
             print(f"Processing chunk {i + 1}/{len(chunks)}...")
@@ -145,23 +144,27 @@ def generate_audio(model, speaker_id, phrases, output_dir, bg_music_filename=Non
 
             # Convert speed to numeric value
             speed_value = speed_to_value(speed)
-            
-            # Perform inference with model
-            out = model.inference(
-                chunk,
-                "ar",
-                gpt_cond_latent,
-                speaker_embedding,
-                temperature=0.8,  # Default temperature
-                speed=speed_value
-            )
-            audio_chunk = torch.tensor(out["wav"]).unsqueeze(0)
-            audio_chunk = add_silence(audio_chunk)
-            combined_audio.append(audio_chunk)
-            process_time = time.time() - start_time
-            audio_time = len(audio_chunk) / 24000
-            logger.info(f"Processing time: {process_time:.3f} seconds")
-            logger.info(f"Real-time factor: {process_time / audio_time:.3f}")
+
+            with torch.no_grad():
+                out = model.inference(
+                    chunk,
+                    "ar",
+                    gpt_cond_latent,
+                    speaker_embedding,
+                    temperature=params['temperature'],
+                    length_penalty=params['length_penalty'],
+                    repetition_penalty=params['repetition_penalty'],
+                    top_k=params['top_k'],
+                    top_p=params['top_p'],
+                    speed=speed_value
+                )
+                audio_chunk = torch.tensor(out["wav"]).unsqueeze(0)
+                audio_chunk = add_silence(audio_chunk)
+                combined_audio.append(audio_chunk)
+                process_time = time.time() - start_time
+                audio_time = len(audio_chunk) / 24000
+                logger.info(f"Processing time: {process_time:.3f} seconds")
+                logger.info(f"Real-time factor: {process_time / audio_time:.3f}")
 
         # Combine all audio chunks smoothly
         final_audio = combined_audio[0]
@@ -177,3 +180,13 @@ def generate_audio(model, speaker_id, phrases, output_dir, bg_music_filename=Non
         
         torchaudio.save(output_path, final_audio, 24000)
         print(f"Generated audio saved to: {output_path}")
+
+
+
+if __name__ == '__main__':
+    text = "!كِلنا عِنْدِنا صُندوقْ أفْكار، فِكرة جَتْنَا فِي، السيارة اوالطَيَّارة، و المَدرسة اوالعَمَل، لَمَّا ضَحَك لِنا الحَظ، أو خَاننا التَّعْبِير. اليوم بِنِتحَدث عَن كيف مُمكِن نعبِّر عَن أفكارنا، ونَسْتَعرِض مَعكُم أشهر الشركات في هذا المجال "
+    speaker_id = "speaker2"
+    bg_music_filename ="music1.wav"
+    speed = 'normal'
+    generate_audio(model, speaker_id, [text], output_dir, bg_music_filename, speed)
+
